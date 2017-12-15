@@ -22,6 +22,7 @@ public class ActorThreadPool {
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
 	private ConcurrentHashMap<String,Boolean> _workonList;
 	private Thread[] pool;
+
 	/**
 	 * creates a {@link ActorThreadPool} which has nthreads. Note, threads
 	 * should not get started until calling to the {@link #start()} method.
@@ -40,6 +41,9 @@ public class ActorThreadPool {
 		_privatestateList = new ConcurrentHashMap<>();
 		_workonList = new ConcurrentHashMap<>();
 		pool = new Thread[nthreads];
+        for(Thread t : pool){t = new Thread(()->{
+            while(true){}
+        });}
 		// TODO: replace method body with real implementation
 		throw new UnsupportedOperationException("Not Implemented Yet.");
 	}
@@ -85,7 +89,6 @@ public class ActorThreadPool {
             _actionsList.put(actorId,newactor);
             _privatestateList.put(actorId,actorState);
             _workonList.put(actorId,false);
-            //asdasdasd
         }
 
 	}
