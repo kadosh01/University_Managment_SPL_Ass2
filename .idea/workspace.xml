@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f8f29ec-fd8b-4ffc-b9e1-e2d1c70f70b2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -619,7 +618,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1513352369742</updated>
-      <workItem from="1513352371243" duration="5594000" />
+      <workItem from="1513352371243" duration="5633000" />
     </task>
     <task id="LOCAL-00001" summary="18:46">
       <created>1513356396837</created>
@@ -642,11 +641,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513356814251</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="18:53">
+      <created>1513358307792</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1513358307792</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5594000" />
+    <option name="totallyTimeSpent" value="5633000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
