@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.*;
 import java.lang.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * represents an actor thread pool - to understand what this class does please
@@ -73,7 +74,19 @@ public class ActorThreadPool {
 	 *            actor's private state (actor's information)
 	 */
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
-		
+        if (_actionsList.containsKey(actorId))
+        {
+            _actionsList.get(actorId).add(action);
+        }
+        else
+        {
+            ConcurrentLinkedQueue<Action> newactor =new ConcurrentLinkedQueue<>();
+            newactor.add(action);
+            _actionsList.put(actorId,newactor);
+            _privatestateList.put(actorId,actorState);
+            _workonList.put(actorId,false);
+        }
+
 	}
 
 	/**
