@@ -49,7 +49,8 @@ public class ActorThreadPool {
 	 * @return actors
 	 */
 	public Map<String, PrivateState> getActors(){
-	    return _privatestateList;
+
+		return _privatestateList;
 	}
 	
 	/**
