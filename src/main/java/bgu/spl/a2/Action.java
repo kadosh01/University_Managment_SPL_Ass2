@@ -1,6 +1,5 @@
 package bgu.spl.a2;
 
-import javax.security.auth.callback.Callback;
 import java.util.Collection;
 
 /**
@@ -15,7 +14,12 @@ import java.util.Collection;
  * @param <R> the action result type
  */
 public abstract class Action<R> {
-
+    private String _actionName;
+    private Promise<R> _promise=new Promise<>();
+    private int _callback_count=0;
+    private callback _callback;
+    private ActorThreadPool _pool;
+    private PrivateState _privateState;
 
 	/**
      * start handling the action - note that this method is protected, a thread
@@ -37,7 +41,13 @@ public abstract class Action<R> {
     *
     */
    /*package*/ final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
-   }
+       if(actorState.getLogger().contains(actorId)) {
+           _callback.call();
+       }
+       else {
+           start();
+       }
+    }
     
     
     /**
@@ -51,6 +61,17 @@ public abstract class Action<R> {
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
+        _callback_count+=actions.size();
+        for(Action<?> act : actions)
+        {
+            act.getResult().subscribe(()->{
+                _callback_count--;
+                if(_callback_count==0)
+                {
+                    _pool.submit(this,_actionName,_privateState);
+                }
+            });
+        }
 
     }
 
@@ -61,17 +82,14 @@ public abstract class Action<R> {
      * @param result - the action calculated result
      */
     protected final void complete(R result) {
-       	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
-   
+       _promise.resolve(result);
     }
     
     /**
      * @return action's promise (result)
      */
     public final Promise<R> getResult() {
-    	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+    	return _promise;
     }
     
     /**
@@ -87,24 +105,22 @@ public abstract class Action<R> {
      * @return promise that will hold the result of the sent action
      */
 	public Promise<?> sendMessage(Action<?> action, String actorId, PrivateState actorState){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
-	}
+        _pool.submit(action,actorId,actorState);
+        return action.getResult();
+    }
 	
 	/**
 	 * set action's name
 	 * @param actionName
 	 */
 	public void setActionName(String actionName){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+        _actionName=actionName;
 	}
 	
 	/**
 	 * @return action's name
 	 */
 	public String getActionName(){
-        //TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
+       return _actionName;
 	}
 }
