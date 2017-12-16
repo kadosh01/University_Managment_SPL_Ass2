@@ -34,7 +34,6 @@ public class VersionMonitor {
                 wait();
             }
             catch(InterruptedException e){
-
             }
         }
     }

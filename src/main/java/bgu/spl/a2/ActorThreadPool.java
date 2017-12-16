@@ -44,27 +44,24 @@ public class ActorThreadPool {
 		pool = new Thread[nthreads];
 		vm= new VersionMonitor();
 		for(int i=0; i<pool.length; i++){
-			pool[i]= new Thread(new Runnable() {
-				@Override
-				public void run() {
-					while(!finish){
-						Set<String> actors= _actionsList.keySet();
-						for(String id : actors){
-							if(_workonList.get(id)){
-								if(_actionsList.get(id).size()>0){
-									Queue<Action> actor_actions= _actionsList.get(id);
-									actor_actions.remove().start();
-								}
-							}
-						}
-						try {
-							vm.await(vm.getVersion());
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-					}
-				}
-			});
+			pool[i]= new Thread(() -> {
+                while(!finish){
+                    Set<String> actors= _actionsList.keySet();
+                    for(String id : actors){
+                        if(_workonList.get(id)){
+                            if(_actionsList.get(id).size()>0){
+                                Queue<Action> actor_actions= _actionsList.get(id);
+                                actor_actions.remove().start();
+                            }
+                        }
+                    }
+                    try {
+                        vm.await(vm.getVersion());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
 		}
 	}
 
