@@ -22,7 +22,8 @@ public class ActorThreadPool {
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
 	private ConcurrentHashMap<String,Boolean> _workonList;
 	private Thread[] pool;
-
+	private boolean finish = false;
+	private VersionMonitor vm;
 	/**
 	 * creates a {@link ActorThreadPool} which has nthreads. Note, threads
 	 * should not get started until calling to the {@link #start()} method.
@@ -41,11 +42,27 @@ public class ActorThreadPool {
 		_privatestateList = new ConcurrentHashMap<>();
 		_workonList = new ConcurrentHashMap<>();
 		pool = new Thread[nthreads];
-        for(Thread t : pool){t = new Thread(()->{
-            while(true){}
-        });}
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		vm= new VersionMonitor();
+		for(int i=0; i<pool.length; i++){
+			pool[i]= new Thread(() -> {
+                while(!finish){
+                    Set<String> actors= _actionsList.keySet();
+                    for(String id : actors){
+                        if(_workonList.get(id)){
+                            if(_actionsList.get(id).size()>0){
+                                Queue<Action> actor_actions= _actionsList.get(id);
+                                actor_actions.remove().start();
+                            }
+                        }
+                    }
+                    try {
+                        vm.await(vm.getVersion());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+		}
 	}
 
 	/**
@@ -53,7 +70,7 @@ public class ActorThreadPool {
 	 * @return actors
 	 */
 	public Map<String, PrivateState> getActors(){
-	    return _privatestateList;
+		return _privatestateList;
 	}
 	
 	/**
@@ -84,13 +101,13 @@ public class ActorThreadPool {
         }
         else
         {
-            ConcurrentLinkedQueue<Action> newactor =new ConcurrentLinkedQueue<>();
-            newactor.add(action);
-            _actionsList.put(actorId,newactor);
+            ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
+            newActor.add(action);
+            _actionsList.put(actorId,newActor);
             _privatestateList.put(actorId,actorState);
             _workonList.put(actorId,false);
         }
-
+		vm.inc();
 	}
 
 	/**
@@ -112,8 +129,8 @@ public class ActorThreadPool {
 	 * start the threads belongs to this thread pool
 	 */
 	public void start() {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		for(int i=0; i<pool.length; i++)
+			pool[i].start();
 	}
 
 }
