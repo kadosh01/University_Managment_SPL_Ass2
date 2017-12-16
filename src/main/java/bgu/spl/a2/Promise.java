@@ -33,7 +33,7 @@ public class Promise<T>{
 	public T get() {
 		if(isResolved())
 			return result;
-		else throw new IllegalStateException();
+		else throw new IllegalStateException("not resolved yet");
 	}
 
 	/**
@@ -61,8 +61,11 @@ public class Promise<T>{
 	 *            - the value to resolve this promise object with
 	 */
 	public void resolve(T value){
+		if(isResolved())
+			throw new IllegalStateException("already resolved");
 		for(callback cal: callbacks){
 			cal.call();
+			callbacks.remove(cal);
 		}
 		result= value;
 	}
@@ -82,5 +85,9 @@ public class Promise<T>{
 	 */
 	public void subscribe(callback callback) {
 		callbacks.add(callback);
+		if(isResolved()){
+			callback.call();
+			callbacks.remove(callback);
+		}
 	}
 }
