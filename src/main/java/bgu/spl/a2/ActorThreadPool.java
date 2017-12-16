@@ -51,7 +51,7 @@ public class ActorThreadPool {
                         if(_workonList.get(id)){
                             if(_actionsList.get(id).size()>0){
                                 Queue<Action> actor_actions= _actionsList.get(id);
-                                actor_actions.remove().start();
+                                actor_actions.remove().handle(this, id, _privatestateList.get(id));
                             }
                         }
                     }
@@ -95,12 +95,10 @@ public class ActorThreadPool {
 	 *            actor's private state (actor's information)
 	 */
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
-        if (_actionsList.containsKey(actorId))
-        {
+        if (_actionsList.containsKey(actorId)){
             _actionsList.get(actorId).add(action);
         }
-        else
-        {
+        else{
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
             newActor.add(action);
             _actionsList.put(actorId,newActor);
@@ -121,8 +119,9 @@ public class ActorThreadPool {
 	 *             if the thread that shut down the threads is interrupted
 	 */
 	public void shutdown() throws InterruptedException {
-		// TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		finish= true;
+		for(int i=0; i<pool.length; i++)
+			pool[i].join();
 	}
 
 	/**

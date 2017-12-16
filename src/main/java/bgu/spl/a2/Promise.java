@@ -1,5 +1,7 @@
 package bgu.spl.a2;
 
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 /**
  * this class represents a deferred result i.e., an object that eventually will
  * be resolved to hold a result of some operation, the class allows for getting
@@ -17,6 +19,9 @@ package bgu.spl.a2;
  */
 public class Promise<T>{
 
+	private T result;
+	private ConcurrentLinkedQueue<callback> callbacks= new ConcurrentLinkedQueue<callback>();
+
 	/**
 	 *
 	 * @return the resolved value if such exists (i.e., if this object has been
@@ -26,8 +31,9 @@ public class Promise<T>{
 	 *             not yet resolved
 	 */
 	public T get() {
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		if(isResolved())
+			return result;
+		else throw new IllegalStateException();
 	}
 
 	/**
@@ -37,8 +43,7 @@ public class Promise<T>{
 	 *         before.
 	 */
 	public boolean isResolved() {
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		return result!=null;
 	}
 
 
@@ -56,8 +61,10 @@ public class Promise<T>{
 	 *            - the value to resolve this promise object with
 	 */
 	public void resolve(T value){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		for(callback cal: callbacks){
+			cal.call();
+		}
+		result= value;
 	}
 
 	/**
@@ -74,7 +81,6 @@ public class Promise<T>{
 	 *            the callback to be called when the promise object is resolved
 	 */
 	public void subscribe(callback callback) {
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		callbacks.add(callback);
 	}
 }

@@ -1,5 +1,6 @@
 package bgu.spl.a2;
 
+import javax.security.auth.callback.Callback;
 import java.util.Collection;
 
 /**
@@ -14,6 +15,7 @@ import java.util.Collection;
  * @param <R> the action result type
  */
 public abstract class Action<R> {
+
 
 	/**
      * start handling the action - note that this method is protected, a thread
@@ -49,9 +51,7 @@ public abstract class Action<R> {
      * @param callback the callback to execute once all the results are resolved
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
-       	//TODO: replace method body with real implementation
-        throw new UnsupportedOperationException("Not Implemented Yet.");
-   
+
     }
 
     /**
