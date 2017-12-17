@@ -14,6 +14,7 @@ public class AddStudent extends Action<Boolean>{
     protected void start() {
         StudentPrivateState sps= new StudentPrivateState();
         sendMessage(null, _actionName, _privateState);
-        //((DepartmentPrivateState)_privateState)
+        ((DepartmentPrivateState)_privateState).addStudent(_actionName);
+        complete(true);
     }
 }
