@@ -1,5 +1,6 @@
 package bgu.spl.a2.sim.privateStates;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import bgu.spl.a2.PrivateState;
@@ -20,8 +21,10 @@ public class CoursePrivateState extends PrivateState{
 	 * this may cause automatic tests to fail..
 	 */
 	public CoursePrivateState() {
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		registered= new Integer(0);
+		availableSpots= new Integer(0);
+		regStudents= new LinkedList<String>();
+		prequisites= new LinkedList<String>();
 	}
 
 	public Integer getAvailableSpots() {
@@ -38,5 +41,13 @@ public class CoursePrivateState extends PrivateState{
 
 	public List<String> getPrequisites() {
 		return prequisites;
+	}
+
+	public void setAvailableSpots(int num){
+		availableSpots= new Integer(num);
+	}
+
+	public void setPrerequisites(List<String> pre){
+		prequisites= pre;
 	}
 }
