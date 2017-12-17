@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a0b60141-a903-4112-a99a-a9c323912998" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/OpenCourse.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/OpenCourse.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -135,6 +132,7 @@
     </leaf>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
@@ -794,14 +792,21 @@
       <option name="project" value="LOCAL" />
       <updated>1513459869288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="23:16">
+      <created>1513545418938</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1513545418938</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24130000" />
+    <option name="totallyTimeSpent" value="24484000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1375" height="735" extended-state="0" />
+    <frame x="-7" y="0" width="1375" height="735" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -867,7 +872,8 @@
     <MESSAGE value="15:33" />
     <MESSAGE value="m1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/bgu/spl/a2/ActorThreadPool.java" />
     <MESSAGE value="23:30" />
-    <option name="LAST_COMMIT_MESSAGE" value="23:30" />
+    <MESSAGE value="23:16" />
+    <option name="LAST_COMMIT_MESSAGE" value="23:16" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
