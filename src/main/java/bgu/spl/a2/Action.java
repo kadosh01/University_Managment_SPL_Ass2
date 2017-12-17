@@ -83,6 +83,8 @@ public abstract class Action<R> {
      */
     protected final void complete(R result) {
        _promise.resolve(result);
+       _pool.setWorkOn(_actionName,false); //change the state of the current actor
+
     }
     
     /**
