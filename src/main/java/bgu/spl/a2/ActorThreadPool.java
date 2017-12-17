@@ -20,7 +20,7 @@ public class ActorThreadPool {
 	private int nthreads; // number of thread
 	private ConcurrentHashMap<String,Queue<Action>> _actionsList;
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
-	private ConcurrentHashMap<String,Boolean> _workonList;
+	protected ConcurrentHashMap<String,Boolean> _workonList;
 	private Thread[] pool;
 	private boolean finish = false;
 	private VersionMonitor vm;
@@ -48,10 +48,11 @@ public class ActorThreadPool {
                 while(!finish){
                     Set<String> actors= _actionsList.keySet();
                     for(String id : actors){
-                        if(_workonList.get(id)){
+                        if(!_workonList.get(id)){
                             if(_actionsList.get(id).size()>0){
                                 Queue<Action> actor_actions= _actionsList.get(id);
                                 actor_actions.remove().handle(this, id, _privatestateList.get(id));
+                                _workonList.put(id,true); //check if the value changes
                             }
                         }
                     }
@@ -100,7 +101,8 @@ public class ActorThreadPool {
         }
         else{
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
-            newActor.add(action);
+            if(action!=null)
+            	newActor.add(action);
             _actionsList.put(actorId,newActor);
             _privatestateList.put(actorId,actorState);
             _workonList.put(actorId,false);
@@ -132,4 +134,8 @@ public class ActorThreadPool {
 			pool[i].start();
 	}
 
+	public void setWorkOn(String actorid,boolean state)
+	{
+		_workonList.put(actorid,state);
+	}
 }
