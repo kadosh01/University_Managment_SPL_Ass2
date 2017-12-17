@@ -2,6 +2,7 @@ package bgu.spl.a2.sim.actions;
 
 import bgu.spl.a2.Action;
 import bgu.spl.a2.sim.privateStates.CoursePrivateState;
+import bgu.spl.a2.sim.privateStates.DepartmentPrivateState;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public class OpenCourse extends Action<Boolean>{
         cps.setAvailableSpots(_availableSpaces);
         cps.setPrerequisites(_prerequisites);
         sendMessage(null,_actionName,cps);
+        ((DepartmentPrivateState)_privateState).addCourse(_actionName);
         complete(true);
 
     }
