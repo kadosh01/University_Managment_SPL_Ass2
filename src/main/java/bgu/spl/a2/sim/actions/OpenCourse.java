@@ -21,7 +21,10 @@ public class OpenCourse extends Action<Boolean>{
     public void start()
     {
         CoursePrivateState cps= new CoursePrivateState();
-
+        cps.setAvailableSpots(_availableSpaces);
+        cps.setPrerequisites(_prerequisites);
+        sendMessage(null,_actionName,cps);
+        complete(true);
 
     }
 
