@@ -14,12 +14,12 @@ import java.util.Collection;
  * @param <R> the action result type
  */
 public abstract class Action<R> {
-    private String _actionName;
-    private Promise<R> _promise=new Promise<>();
-    private int _callback_count=0;
-    private callback _callback;
-    private ActorThreadPool _pool;
-    private PrivateState _privateState;
+    protected String _actionName;
+    protected Promise<R> _promise=new Promise<>();
+    protected int _callback_count=0;
+    protected callback _callback;
+    protected ActorThreadPool _pool;
+    protected PrivateState _privateState;
 
 	/**
      * start handling the action - note that this method is protected, a thread
