@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0b60141-a903-4112-a99a-a9c323912998" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/AddStudent.java" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,7 +38,7 @@
       <file leaf-file-name="Promise.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1100">
+            <state relative-caret-position="-143">
               <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
               <folding>
                 <element signature="e#1504#1505#0" expanded="true" />
@@ -51,8 +51,8 @@
       <file leaf-file-name="Action.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+            <state relative-caret-position="-775">
+              <caret line="62" column="83" lean-forward="false" selection-start-line="62" selection-start-column="83" selection-end-line="62" selection-end-column="83" />
               <folding>
                 <element signature="e#2539#2540#0" expanded="true" />
                 <element signature="e#2578#2579#0" expanded="true" />
@@ -67,7 +67,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoursePrivateState.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddStudent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/AddStudent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CoursePrivateState.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="615">
@@ -92,7 +102,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentPrivateState.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="StudentPrivateState.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/StudentPrivateState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
@@ -124,11 +134,18 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="part1" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -146,6 +163,7 @@
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/AddStudent.java" />
       </list>
     </option>
   </component>
@@ -221,6 +239,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="a2" type="462c0819:PsiDirectoryNode" />
               <item name="sim" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="a2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="University_Managment_SPL_Ass2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="a2" type="462c0819:PsiDirectoryNode" />
+              <item name="sim" type="462c0819:PsiDirectoryNode" />
+              <item name="actions" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="a2" type="b2602c69:ProjectViewProjectNode" />
@@ -675,7 +703,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513459869288</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="21:59">
+      <created>1513540796598</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1513540796599</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -726,7 +761,8 @@
     <MESSAGE value="15:33" />
     <MESSAGE value="m1&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/bgu/spl/a2/ActorThreadPool.java" />
     <MESSAGE value="23:30" />
-    <option name="LAST_COMMIT_MESSAGE" value="23:30" />
+    <MESSAGE value="21:59" />
+    <option name="LAST_COMMIT_MESSAGE" value="21:59" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -941,45 +977,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
-          <folding>
-            <element signature="e#1504#1505#0" expanded="true" />
-            <element signature="e#1530#1531#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="46" column="13" lean-forward="false" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
-          <folding>
-            <element signature="e#2539#2540#0" expanded="true" />
-            <element signature="e#2578#2579#0" expanded="true" />
-            <element signature="e#2682#2683#0" expanded="true" />
-            <element signature="e#2710#2711#0" expanded="true" />
-            <element signature="e#3303#3304#0" expanded="true" />
-            <element signature="e#3338#3339#0" expanded="true" />
-            <element signature="e#3408#3409#0" expanded="true" />
-            <element signature="e#3438#3439#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/StudentPrivateState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
@@ -995,6 +995,50 @@
             <element signature="e#1141#1142#0" expanded="true" />
             <element signature="e#1164#1165#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/AddStudent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143">
+          <caret line="45" column="8" lean-forward="false" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
+          <folding>
+            <element signature="e#1504#1505#0" expanded="true" />
+            <element signature="e#1530#1531#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-775">
+          <caret line="62" column="83" lean-forward="false" selection-start-line="62" selection-start-column="83" selection-end-line="62" selection-end-column="83" />
+          <folding>
+            <element signature="e#2539#2540#0" expanded="true" />
+            <element signature="e#2578#2579#0" expanded="true" />
+            <element signature="e#2682#2683#0" expanded="true" />
+            <element signature="e#2710#2711#0" expanded="true" />
+            <element signature="e#3303#3304#0" expanded="true" />
+            <element signature="e#3338#3339#0" expanded="true" />
+            <element signature="e#3408#3409#0" expanded="true" />
+            <element signature="e#3438#3439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/StudentPrivateState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
