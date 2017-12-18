@@ -5,15 +5,19 @@ import bgu.spl.a2.sim.privateStates.DepartmentPrivateState;
 import bgu.spl.a2.sim.privateStates.StudentPrivateState;
 
 public class AddStudent extends Action<Boolean>{
+    protected String _studentId;
+    protected String _departmentName;
 
-    public AddStudent(String studentName){
-        _actionName= studentName;
+    public AddStudent(String studentId, String departmentName){
+        setActionName("Add Student");
+        _studentId= studentId;
+        _departmentName= departmentName;
     }
 
     @Override
     protected void start() {
         StudentPrivateState sps= new StudentPrivateState();
-        sendMessage(null, _actionName, _privateState);
+        sendMessage(null, _studentId, _privateState);
         ((DepartmentPrivateState)_privateState).addStudent(_actionName);
         complete(true);
     }

@@ -47,9 +47,9 @@ public abstract class Action<R> {
            _callback.call();
        }
        else {
-           start();
            _pool= pool;
            _privateState= actorState;
+           start();
        }
     }
     

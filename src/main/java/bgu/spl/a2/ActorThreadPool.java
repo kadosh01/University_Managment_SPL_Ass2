@@ -134,8 +134,8 @@ public class ActorThreadPool {
 			pool[i].start();
 	}
 
-	public void setWorkOn(String actorid,boolean state)
+	public void setWorkOn(String actorId, boolean state)
 	{
-		_workonList.put(actorid,state);
+		_workonList.put(actorId,state);
 	}
 }

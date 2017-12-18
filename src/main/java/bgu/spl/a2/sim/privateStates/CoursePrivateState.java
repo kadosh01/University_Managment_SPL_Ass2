@@ -50,4 +50,8 @@ public class CoursePrivateState extends PrivateState{
 	public void setPrerequisites(List<String> pre){
 		prequisites= pre;
 	}
+
+	public boolean hasAvailableSpots(){
+		return availableSpots>registered;
+	}
 }
