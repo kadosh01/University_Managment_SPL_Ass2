@@ -42,11 +42,14 @@ public abstract class Action<R> {
     *
     */
    /*package*/ final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
+
        if(actorState.getLogger().contains(actorId)) {
            _callback.call();
        }
        else {
            start();
+           _pool= pool;
+           _privateState= actorState;
        }
     }
     
@@ -63,6 +66,7 @@ public abstract class Action<R> {
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
         _callback_count+=actions.size();
+        _callback= callback;
         for(Action<?> act : actions)
         {
             act.getResult().subscribe(()->{
