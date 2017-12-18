@@ -20,6 +20,7 @@ public abstract class Action<R> {
     protected callback _callback;
     protected ActorThreadPool _pool;
     protected PrivateState _privateState;
+    protected String _actorID;
 
 	/**
      * start handling the action - note that this method is protected, a thread
@@ -41,11 +42,14 @@ public abstract class Action<R> {
     *
     */
    /*package*/ final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
+
        if(actorState.getLogger().contains(actorId)) {
            _callback.call();
        }
        else {
            start();
+           _pool= pool;
+           _privateState= actorState;
        }
     }
     
@@ -62,6 +66,7 @@ public abstract class Action<R> {
      */
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
         _callback_count+=actions.size();
+        _callback= callback;
         for(Action<?> act : actions)
         {
             act.getResult().subscribe(()->{
