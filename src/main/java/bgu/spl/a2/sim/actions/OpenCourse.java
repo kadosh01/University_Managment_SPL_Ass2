@@ -13,19 +13,22 @@ import java.util.List;
 public class OpenCourse extends Action<Boolean>{
     private int _availableSpaces;
     List<String> _prerequisites;
-    public OpenCourse(int availableSpaces,List<String> prerequisites,String courseName)
+    private String _courseName;
+    public OpenCourse(int availableSpaces, List<String> prerequisites, String courseName, String departmentName)
     {
-        _actionName=courseName;
+        _actorID=departmentName;
+        _courseName=courseName;
         _availableSpaces=availableSpaces;
         _prerequisites=prerequisites;
+        setActionName("Open Course");
     }
     public void start()
     {
         CoursePrivateState cps= new CoursePrivateState();
         cps.setAvailableSpots(_availableSpaces);
         cps.setPrerequisites(_prerequisites);
-        sendMessage(null,_actionName,cps);
-        ((DepartmentPrivateState)_privateState).addCourse(_actionName);
+        sendMessage(null,_courseName,cps);
+        ((DepartmentPrivateState)_privateState).addCourse(_courseName);
         complete(true);
 
     }
