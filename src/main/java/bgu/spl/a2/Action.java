@@ -20,6 +20,7 @@ public abstract class Action<R> {
     protected callback _callback;
     protected ActorThreadPool _pool;
     protected PrivateState _privateState;
+    protected String _actorID;
 
 	/**
      * start handling the action - note that this method is protected, a thread

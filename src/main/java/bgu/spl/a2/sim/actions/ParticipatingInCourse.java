@@ -10,4 +10,6 @@ public class ParticipatingInCourse extends Action<Boolean> {
     protected void start() {
 
     }
+
+    public ParticipatingInCourse(){}
 }
