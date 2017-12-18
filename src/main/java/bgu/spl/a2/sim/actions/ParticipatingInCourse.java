@@ -11,12 +11,12 @@ import java.util.List;
  * Created by Joseph on 17/12/2017.
  */
 public class ParticipatingInCourse extends Action<Boolean> {
-    protected String _studentId,_courseName;
+    protected String _studentId;
     protected Integer _grade;
     public ParticipatingInCourse(String studentId,String courseName,Integer grade)
     {
         setActionName("Participate In Course");
-        _courseName=courseName;
+        _actorID=courseName;
         _grade=grade;
         _studentId=studentId;
     }
@@ -29,7 +29,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
                 @Override
                 protected void start() {
                     StudentPrivateState sps=(StudentPrivateState) _pool.getActors().get(_studentId);
-                    sps.getGrades().put(_courseName,_grade);
+                    sps.getGrades().put(_actorID,_grade);
                     complete(true);
                 }
             });
