@@ -1,5 +1,7 @@
 package bgu.spl.a2.sim.privateStates;
 
+import java.util.Dictionary;
+import java.util.LinkedList;
 import java.util.List;
 
 import bgu.spl.a2.PrivateState;
@@ -17,8 +19,8 @@ public class DepartmentPrivateState extends PrivateState{
 	 * this may cause automatic tests to fail..
 	 */
 	public DepartmentPrivateState() {
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		courseList= new LinkedList<String>();
+		studentList= new LinkedList<String>();
 	}
 
 	public List<String> getCourseList() {
@@ -30,16 +32,19 @@ public class DepartmentPrivateState extends PrivateState{
 	}
 
 	public void addCourse(String courseName){
-		courseList.add(courseName);
+		if(!courseList.contains(courseName))
+			courseList.add(courseName);
 	}
 	public void removeCourse(String courseName){
-		courseList.remove(courseName);
+		if(courseList.contains(courseName))
+			courseList.remove(courseName);
 	}
 	public void addStudent(String studentName){
-		courseList.add(studentName);
+		if(!studentList.contains(studentName))
+			studentList.add(studentName);
 	}
 	public void removeStudent(String studentName){
-		courseList.remove(studentName);
+		studentList.remove(studentName);
 	}
 	
 }
