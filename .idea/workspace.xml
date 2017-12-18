@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a0b60141-a903-4112-a99a-a9c323912998" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -714,7 +713,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513549559641</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="19:22">
+      <created>1513617790333</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1513617790333</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -768,7 +774,8 @@
     <MESSAGE value="23:16" />
     <MESSAGE value="00:24" />
     <MESSAGE value="00:25" />
-    <option name="LAST_COMMIT_MESSAGE" value="00:25" />
+    <MESSAGE value="19:22" />
+    <option name="LAST_COMMIT_MESSAGE" value="19:22" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
