@@ -51,7 +51,27 @@ public class CoursePrivateState extends PrivateState{
 		prequisites= pre;
 	}
 
-	public boolean hasAvailableSpots(){
-		return availableSpots>registered;
+	public boolean inc(){
+		if(availableSpots>registered) {
+			registered = new Integer(registered.intValue() + 1);
+			return true;
+		}
+		return false;
+	}
+	public boolean dec(){
+		if(registered>0) {
+			registered = new Integer(registered.intValue() - 1);
+			return true;
+		}
+		return false;
+	}
+
+	public void addStudent(String studentName){
+		if(!regStudents.contains(studentName))
+			regStudents.add(studentName);
+	}
+	public void removeStudent(String studentName){
+		if(regStudents.contains(studentName))
+			regStudents.remove(studentName);
 	}
 }
