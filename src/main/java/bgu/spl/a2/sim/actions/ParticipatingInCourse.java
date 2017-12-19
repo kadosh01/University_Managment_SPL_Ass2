@@ -23,9 +23,9 @@ public class ParticipatingInCourse extends Action<Boolean> {
 
     @Override
     protected void start() {
-        if (((CoursePrivateState) _privateState).inc()) {
+        if (((CoursePrivateState) _privateState).inc()) { //check if there is available place in the course.
             List<Action<Boolean>> actions = new LinkedList<>();
-            actions.add(new Action<Boolean>() {
+            actions.add(new Action<Boolean>() { // new action child : add the course to student's grades list.
                 @Override
                 protected void start() {
                     StudentPrivateState sps=(StudentPrivateState) _pool.getActors().get(_studentId);
