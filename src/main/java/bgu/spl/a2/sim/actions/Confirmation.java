@@ -24,8 +24,13 @@ public class Confirmation extends Action<Boolean> {
 
     protected void start(){
         List<Action<Boolean>> actions = new ArrayList <>();
-        complete(true);
-
+        then(actions, ()-> {
+            System.out.println("Confirmation complete has been called");
+            complete(true);
+        });
     }
 
+    public String ToString(){
+        return "Confirmation";
+    }
 }
