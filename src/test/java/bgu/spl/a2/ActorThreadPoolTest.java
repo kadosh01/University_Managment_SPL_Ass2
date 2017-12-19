@@ -23,16 +23,14 @@ public class ActorThreadPoolTest {
     @Test
     public void start() {
 
-        ActorThreadPool pool = new ActorThreadPool(10);
+        ActorThreadPool pool = new ActorThreadPool(300);
         Action<String> trans = new Transmission(100, "A","B","bank2", "bank1");
         pool.start();
         pool.submit(trans, "bank1", new BankStates());
         CountDownLatch e = new CountDownLatch(1);
-        System.out.println("CountDownLatch started");
         trans.getResult().subscribe(()-> {
             e.countDown();
         });
-        System.out.println("action subscribed");
         try{
             e.await();}
         catch (InterruptedException ex){}

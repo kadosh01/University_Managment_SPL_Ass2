@@ -11,7 +11,7 @@ import java.util.List;
 public abstract class PrivateState {
 	
 	// holds the actions' name what were executed
-	private List<String> history;
+	private List<String> history= new LinkedList<String>();
 
 	public List<String> getLogger(){
 		return history;
@@ -24,7 +24,7 @@ public abstract class PrivateState {
 	 */
 
 	public void addRecord(String actionName){
-		history= new LinkedList<String>();
+		history.add(actionName);
 	}
 	
 	
