@@ -29,8 +29,21 @@ public class ParticipatingInCourse extends Action<Boolean> {
                 @Override
                 protected void start() {
                     StudentPrivateState sps=(StudentPrivateState) _pool.getActors().get(_studentId);
-                    sps.getGrades().put(_actorID,_grade);
-                    complete(true);
+                    List<String> pre= ((CoursePrivateState) _privateState).getPrequisites();
+                    boolean canRegister= true;
+                    for(String prerequisite: pre){
+                        if(!sps.getGrades().containsKey(prerequisite)){
+                            canRegister=false;
+                            break;
+                        }
+                    }
+                    if(canRegister) {
+                        sps.getGrades().put(_actorID, _grade);
+                        complete(true);
+                    }
+                    else{
+                        complete(false);
+                    }
                 }
             });
             sendMessage(actions.get(0),_studentId,new StudentPrivateState());
