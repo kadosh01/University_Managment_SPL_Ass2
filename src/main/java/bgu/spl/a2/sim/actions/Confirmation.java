@@ -24,13 +24,10 @@ public class Confirmation extends Action<Boolean> {
 
     protected void start(){
         List<Action<Boolean>> actions = new ArrayList <>();
-        /*
         then(actions, ()-> {
             System.out.println("Confirmation complete has been called");
-
+            complete(true);
         });
-        */
-        complete(true);
     }
 
     public String ToString(){

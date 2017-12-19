@@ -45,7 +45,6 @@ public class ActorThreadPool {
 		vm= new VersionMonitor();
 		for(int i=0; i<pool.length; i++){
 			pool[i]= new Thread(() -> {
-			    int version=vm.getVersion();
                 while(!finish){
                     Set<String> actors= _actionsList.keySet();
                     for(String id : actors){
@@ -63,8 +62,8 @@ public class ActorThreadPool {
                         }
                     }
                     try {
-						vm.await(version);
-					} catch (InterruptedException e) {
+                        vm.await(vm.getVersion());
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -132,10 +131,8 @@ public class ActorThreadPool {
 	 */
 	public void shutdown() throws InterruptedException {
 		finish= true;
-        vm.inc();
-		for(int i=0; i<pool.length; i++) {
+		for(int i=0; i<pool.length; i++)
 			pool[i].join();
-		}
 	}
 
 	/**
