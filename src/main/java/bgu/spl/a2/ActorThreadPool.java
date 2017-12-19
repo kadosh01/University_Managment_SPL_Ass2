@@ -131,6 +131,7 @@ public class ActorThreadPool {
 	 */
 	public void shutdown() throws InterruptedException {
 		finish= true;
+		vm.inc();
 		for(int i=0; i<pool.length; i++)
 			pool[i].join();
 	}

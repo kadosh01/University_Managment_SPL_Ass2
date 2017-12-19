@@ -23,7 +23,7 @@ public class ActorThreadPoolTest {
     @Test
     public void start() {
 
-        ActorThreadPool pool = new ActorThreadPool(10);
+        ActorThreadPool pool = new ActorThreadPool(2);
         Action<String> trans = new Transmission(100, "A","B","bank2", "bank1");
         pool.start();
         pool.submit(trans, "bank1", new BankStates());
@@ -34,9 +34,14 @@ public class ActorThreadPoolTest {
         });
         System.out.println("action subscribed");
         try{
-            e.await();}
+            System.out.println("Try await");
+            e.await();
+        }
         catch (InterruptedException ex){}
-        try{ pool.shutdown();}
+        try{
+            System.out.println("Try shutdown");
+            pool.shutdown();
+        }
         catch (InterruptedException ex){}
     }
 }

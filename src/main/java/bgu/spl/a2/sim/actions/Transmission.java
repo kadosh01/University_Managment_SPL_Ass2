@@ -42,8 +42,5 @@ public class Transmission extends Action<String> {
         });
     }
 
-    public String ToString(){
-        return "Transmission";
-    }
 }
 
