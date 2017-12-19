@@ -23,7 +23,7 @@ public class ActorThreadPoolTest {
     @Test
     public void start() {
 
-        ActorThreadPool pool = new ActorThreadPool(10);
+        ActorThreadPool pool = new ActorThreadPool(300);
         Action<String> trans = new Transmission(100, "A","B","bank2", "bank1");
         pool.start();
         pool.submit(trans, "bank1", new BankStates());
