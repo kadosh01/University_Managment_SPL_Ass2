@@ -1,5 +1,6 @@
 package bgu.spl.a2;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,8 +24,7 @@ public abstract class PrivateState {
 	 */
 
 	public void addRecord(String actionName){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		history= new LinkedList<String>();
 	}
 	
 	

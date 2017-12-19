@@ -1,4 +1,6 @@
 package bgu.spl.a2.sim.privateStates;
 
-public class BankStates {
+import bgu.spl.a2.PrivateState;
+
+public class BankStates extends PrivateState {
 }

@@ -21,6 +21,7 @@ public abstract class Action<R> {
     protected ActorThreadPool _pool;
     protected PrivateState _privateState;
     protected String _actorID;
+    private boolean _firstHandle=true;
 
 	/**
      * start handling the action - note that this method is protected, a thread
@@ -43,13 +44,14 @@ public abstract class Action<R> {
     */
    /*package*/ final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
 
-       if(actorState.getLogger().contains(actorId)) {
-           _callback.call();
-       }
-       else {
+       if(_firstHandle){
            _pool= pool;
            _privateState= actorState;
+           _firstHandle= false;
            start();
+       }
+       else{
+           _callback.call();
        }
     }
     
