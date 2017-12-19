@@ -18,6 +18,7 @@ public class Transmission extends Action<String> {
         this.receiver=receiver;
         this.receiverBank=receiverBank;
         this.senderBank=SenderBank;
+        _actionName= "Transmission";
     }
 
     protected void start () {
@@ -39,6 +40,10 @@ public class Transmission extends Action<String> {
                 System.out.println("Transmission filed");
             }
         });
+    }
+
+    public String ToString(){
+        return "Transmission";
     }
 }
 

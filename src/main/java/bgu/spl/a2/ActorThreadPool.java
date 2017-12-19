@@ -50,9 +50,14 @@ public class ActorThreadPool {
                     for(String id : actors){
                         if(!_workonList.get(id)){
                             if(_actionsList.get(id).size()>0){
-                                Queue<Action> actor_actions= _actionsList.get(id);
-                                actor_actions.remove().handle(this, id, _privatestateList.get(id));
-                                _workonList.put(id,true); //check if the value changes
+                            	try {
+									Queue<Action> actor_actions = _actionsList.get(id);
+									actor_actions.remove().handle(this, id, _privatestateList.get(id));
+									_workonList.put(id, true); //check if the value changes
+								}
+								catch (NoSuchElementException e){
+
+								}
                             }
                         }
                     }
@@ -97,7 +102,10 @@ public class ActorThreadPool {
 	 */
 	public void submit(Action<?> action, String actorId, PrivateState actorState) {
         if (_actionsList.containsKey(actorId)){
-            _actionsList.get(actorId).add(action);
+        	if(action!=null) {
+				_actionsList.get(actorId).add(action);
+				vm.inc();
+			}
         }
         else{
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
@@ -106,8 +114,9 @@ public class ActorThreadPool {
             _actionsList.put(actorId,newActor);
             _privatestateList.put(actorId,actorState);
             _workonList.put(actorId,false);
+			vm.inc();
         }
-		vm.inc();
+		System.out.println(action.getActionName()+"Action submitted");
 	}
 
 	/**

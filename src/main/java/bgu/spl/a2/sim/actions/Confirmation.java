@@ -19,6 +19,7 @@ public class Confirmation extends Action<Boolean> {
         this.reciver=reciver;
         this.reciverBank=reciverBank;
         this.bankStates=bankStates;
+        _actionName= "Confimation";
     }
 
     protected void start(){
@@ -27,5 +28,9 @@ public class Confirmation extends Action<Boolean> {
             System.out.println("Confirmation complete has been called");
             complete(true);
         });
+    }
+
+    public String ToString(){
+        return "Confirmation";
     }
 }
