@@ -1,5 +1,10 @@
 package bgu.spl.a2.sim;
 import bgu.spl.a2.Promise;
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 
@@ -12,13 +17,19 @@ import bgu.spl.a2.Promise;
  */
 public class SuspendingMutex {
 	
+	private Computer _computer;
+	private boolean isFree;
+	private Queue<Promise<Computer>> _promises;
+	AtomicInteger queueSize;
+
 	/**
 	 * Constructor
 	 * @param computer
 	 */
 	public SuspendingMutex(Computer computer){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		_computer= computer;
+		isFree= true;
+		_promises= new ConcurrentLinkedQueue<Promise<Computer>>();
 	}
 	/**
 	 * Computer acquisition procedure
@@ -27,15 +38,29 @@ public class SuspendingMutex {
 	 * @return a promise for the requested computer
 	 */
 	public Promise<Computer> down(){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		if(isFree){
+			isFree= false;
+			Promise<Computer> comp= new Promise<>();
+			comp.resolve(_computer);
+			return comp;
+		}
+		else{
+			Promise<Computer> comp= new Promise<>();
+			_promises.add(comp);
+			return comp;
+		}
 	}
 	/**
 	 * Computer return procedure
 	 * releases a computer which becomes available in the warehouse upon completion
 	 */
 	public void up(){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		isFree= true;
+		try {
+			_promises.remove().resolve(_computer);
+		}
+		catch(Exception e){
+
+		}
 	}
 }
