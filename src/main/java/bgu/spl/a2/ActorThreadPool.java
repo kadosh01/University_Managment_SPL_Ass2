@@ -49,7 +49,7 @@ public class ActorThreadPool {
 			        int version= vm.getVersion();
                     Set<String> actors= _actionsList.keySet();
                     for(String id : actors){
-                        if(!_workonList.get(id)){
+                        if( _workonList.get(id)!=null && !_workonList.get(id)){
                             if(_actionsList.get(id).size()>0){
                             	try {
 									Queue<Action> actor_actions = _actionsList.get(id);

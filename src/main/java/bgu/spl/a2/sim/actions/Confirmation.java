@@ -20,6 +20,7 @@ public class Confirmation extends Action<Boolean> {
         this.reciverBank=reciverBank;
         this.bankStates=bankStates;
         _actionName= "Confimation";
+        _actorID=reciverBank;
     }
 
     protected void start(){

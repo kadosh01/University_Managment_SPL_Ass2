@@ -19,6 +19,7 @@ public class Transmission extends Action<String> {
         this.receiverBank=receiverBank;
         this.senderBank=SenderBank;
         _actionName= "Transmission";
+        _actorID=senderBank;
     }
 
     protected void start () {
