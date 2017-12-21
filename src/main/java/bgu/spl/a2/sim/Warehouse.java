@@ -12,6 +12,7 @@ public class Warehouse {
 	private HashMap<String,SuspendingMutex> _pcMutexList;
 	private HashMap<String,Computer> _pcList;
     private static Warehouse instance;
+
 	private Warehouse(List<Computer> computers){
 	    _pcMutexList=new HashMap<>();
 	    _pcList= new HashMap<>();
@@ -22,13 +23,17 @@ public class Warehouse {
         }
     }
 
-	public Warehouse getInstance(List<Computer> computers){
+	public static Warehouse getInstance(List<Computer> computers){
 	    if(instance==null){
 	        instance=new Warehouse(computers);
         }
         return instance;
-
     }
+
+    public static Warehouse getInstance(){
+	    return instance;
+    }
+
     public SuspendingMutex getMutex(String computerName){return _pcMutexList.get(computerName);}
     public Computer getComputer(String computerName){return _pcList.get(computerName);}
 

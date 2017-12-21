@@ -29,5 +29,9 @@ public class StudentPrivateState extends PrivateState{
 		return signature;
 	}
 
+	public void setSignature(long sig){
+		signature= sig;
+	}
+
 
 }
