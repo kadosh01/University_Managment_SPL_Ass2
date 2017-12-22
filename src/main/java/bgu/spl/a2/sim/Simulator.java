@@ -23,6 +23,7 @@ import java.util.List;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
+
 /**
  * A class describing the simulator for part 2 of the assignment
  */
@@ -46,6 +47,40 @@ public class Simulator {
 		}
 		Warehouse warehouse=Warehouse.getInstance(computers);
 		//parsing json Actions
+		List<Action> actionsList=new LinkedList<>();
+		for (Action act:jsonInput.getPhase1() ) {
+			switch (act.getAction()) {
+				case("Open Course"):
+				{
+					break;
+				}
+				case("Add Student"):
+					{
+						break;
+					}
+				case("Participate In Course"):
+				{
+					break;
+				}
+				case("Register With Preferences"):
+				{
+					break;
+				}
+				case("Unregister"):
+				{
+					break;
+				}
+				case("Close Course"):
+				{
+					break;
+				}
+				case("Administrative Check"):
+				{
+					break;
+				}
+				default:
+			}
+		}
     }
 	
 	/**
