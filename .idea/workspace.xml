@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a0b60141-a903-4112-a99a-a9c323912998" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/a2.iml" afterPath="$PROJECT_DIR$/a2.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Action.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Computer.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Computer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Reader.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Gson/Reader.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,10 +88,10 @@
       <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-966">
-              <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="63" column="64" lean-forward="false" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
               <folding>
-                <element signature="e#0#2201#0" expanded="true" />
+                <element signature="e#0#2219#0" expanded="true" />
                 <element signature="imports" expanded="true" />
                 <element signature="e#1413#1414#0" expanded="true" />
                 <element signature="e#1454#1455#0" expanded="true" />
@@ -334,9 +330,9 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="bgu.spl.a2.sim.Simulator" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="C:\Users\PC\Desktop\Software Engineering\Sem03\SPL\assignment2\University_Managment_SPL_Ass2\src\main\java\bgu\spl\a2\sim\input-example.JSON" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
@@ -746,8 +742,8 @@
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Android JUnit.ActorThreadPoolTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.ActorThreadPoolTest" />
-      <item index="2" class="java.lang.String" itemvalue="Application.Simulator" />
+      <item index="1" class="java.lang.String" itemvalue="Application.Simulator" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ActorThreadPoolTest" />
     </list>
     <recent_temporary>
       <list size="2">
@@ -863,7 +859,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513908792237</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="16:20">
+      <created>1513952427531</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1513952427531</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -914,7 +917,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.04816514" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2924312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2924312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -954,7 +957,8 @@
     <MESSAGE value="18:12" />
     <MESSAGE value="19:55" />
     <MESSAGE value="04:12" />
-    <option name="LAST_COMMIT_MESSAGE" value="04:12" />
+    <MESSAGE value="16:20" />
+    <option name="LAST_COMMIT_MESSAGE" value="16:20" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1277,10 +1281,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-966">
-          <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="63" column="64" lean-forward="false" selection-start-line="63" selection-start-column="64" selection-end-line="63" selection-end-column="64" />
           <folding>
-            <element signature="e#0#2201#0" expanded="true" />
+            <element signature="e#0#2219#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#1413#1414#0" expanded="true" />
             <element signature="e#1454#1455#0" expanded="true" />

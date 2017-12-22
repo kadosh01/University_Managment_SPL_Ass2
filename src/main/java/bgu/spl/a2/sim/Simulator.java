@@ -60,8 +60,8 @@ public class Simulator {
 		Gson gson = new Gson();
 		Type type = new TypeToken<Reader>() {}.getType();
 		try{
-			JsonReader jReader = new JsonReader(new FileReader(args[0]));
-			Reader reader= gson.fromJson(jReader, Reader.class);
+			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
+			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			System.out.println("Reader");
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
