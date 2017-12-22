@@ -7,6 +7,18 @@ package bgu.spl.a2.sim;
 import java.util.HashMap;
 import bgu.spl.a2.ActorThreadPool;
 import bgu.spl.a2.PrivateState;
+import com.google.gson.Gson;
+import bgu.spl.a2.Gson.Computer;
+import bgu.spl.a2.Gson.Action;
+import bgu.spl.a2.Gson.Reader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+import com.google.gson.stream.JsonReader;
 
 /**
  * A class describing the simulator for part 2 of the assignment
@@ -15,6 +27,7 @@ public class Simulator {
 
 	
 	public static ActorThreadPool actorThreadPool;
+	private static Reader jsonInput;
 	
 	/**
 	* Begin the simulation Should not be called before attachActorThreadPool()
@@ -30,8 +43,7 @@ public class Simulator {
 	* @param myActorThreadPool - the ActorThreadPool which will be used by the simulator
 	*/
 	public static void attachActorThreadPool(ActorThreadPool myActorThreadPool){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		actorThreadPool= myActorThreadPool;
 	}
 	
 	/**
@@ -44,8 +56,19 @@ public class Simulator {
 	}
 	
 	
-	public static int main(String [] args){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+	public static void main(String [] args){
+		Gson gson = new Gson();
+		Type type = new TypeToken<Reader>() {}.getType();
+		try{
+			JsonReader jReader = new JsonReader(new FileReader(args[0]));
+			Reader reader= gson.fromJson(jReader, Reader.class);
+			System.out.println("Reader");
+			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
+			attachActorThreadPool(atp);
+
+		}
+		catch(FileNotFoundException e){
+			System.out.println("Can't parse JSON file");
+		}
 	}
 }
