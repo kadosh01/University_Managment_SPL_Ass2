@@ -112,9 +112,9 @@ public class ActorThreadPool {
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
             if(action!=null)
             	newActor.add(action);
-            _actionsList.put(actorId,newActor);
-            _privatestateList.put(actorId,actorState);
-            _workonList.put(actorId,false);
+            _actionsList.putIfAbsent(actorId,newActor); // change put to putifabsent
+            _privatestateList.putIfAbsent(actorId,actorState);// change put to putifabsent
+            _workonList.putIfAbsent(actorId,false);// change put to putifabsent
 			vm.inc();
         }
 		System.out.println(action.getActionName()+"Action submitted");

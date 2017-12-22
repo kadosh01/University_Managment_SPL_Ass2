@@ -17,6 +17,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
+import java.util.LinkedList;
+import java.util.List;
+
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 
@@ -33,8 +36,16 @@ public class Simulator {
 	* Begin the simulation Should not be called before attachActorThreadPool()
 	*/
     public static void start(){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		List<bgu.spl.a2.sim.Computer> computers = new LinkedList<>();
+		//parsing json computer
+		for (Computer comp:jsonInput.getComputers() ) {
+			bgu.spl.a2.sim.Computer newComputer= new bgu.spl.a2.sim.Computer(comp.getType());
+			newComputer.setFailSigSig(comp.getSigFail());
+			newComputer.setSuccessSig(comp.getSigSuccess());
+			computers.add(newComputer);
+		}
+		Warehouse warehouse=Warehouse.getInstance(computers);
+		//parsing json Actions
     }
 	
 	/**
@@ -65,6 +76,8 @@ public class Simulator {
 			System.out.println("Reader");
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
+			jsonInput=reader;
+			start(); //calling start()
 
 		}
 		catch(FileNotFoundException e){
