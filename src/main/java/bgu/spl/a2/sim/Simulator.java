@@ -58,8 +58,8 @@ public class Simulator {
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
 		flow.add(jsonInput.getPhase1());
-		flow.add(jsonInput.getPhase2());
-		flow.add(jsonInput.getPhase3());
+		//flow.add(jsonInput.getPhase2());
+		//flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
 		int i=0;
@@ -250,7 +250,7 @@ public class Simulator {
 			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			System.out.println("Reader");
-			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
+			ActorThreadPool atp= new ActorThreadPool(1);//Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
 			start(); //calling start()
