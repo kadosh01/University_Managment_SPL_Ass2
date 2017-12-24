@@ -20,8 +20,10 @@ public class AddStudent extends Action<Boolean>{
     protected void start() {
         StudentPrivateState sps= new StudentPrivateState();
         sendMessage(new Action<Boolean>() {
+
             @Override
             protected void start() {
+
                 complete(true);
             }
         }, _studentId, _privateState);

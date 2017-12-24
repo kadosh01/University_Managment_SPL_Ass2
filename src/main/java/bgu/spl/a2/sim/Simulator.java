@@ -250,7 +250,7 @@ public class Simulator {
 			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			System.out.println("Reader");
-			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
+			ActorThreadPool atp= new ActorThreadPool(1);//Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
 			start(); //calling start()
