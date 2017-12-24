@@ -14,13 +14,13 @@ import java.util.Collection;
  * @param <R> the action result type
  */
 public abstract class Action<R> {
-    protected String _actionName;
+    protected String _actionName="empty";
     protected Promise<R> _promise=new Promise<>();
     protected int _callback_count=0;
     protected callback _callback;
     protected ActorThreadPool _pool;
     protected PrivateState _privateState;
-    protected String _actorID;
+    protected String _actorID="empty actor";
     private boolean _firstHandle=true;
 
 	/**
@@ -48,12 +48,13 @@ public abstract class Action<R> {
            _pool= pool;
            _privateState= actorState;
            _firstHandle= false;
-           start();
            System.out.println(_actorID+" : "+_actionName+" status : start by - "+ Thread.currentThread().getName());
+           start();
+
        }
        else{
-           _callback.call();
            System.out.println(_actorID+" : "+_actionName+" status : continue by - "+ Thread.currentThread().getName());
+           _callback.call();
        }
     }
     

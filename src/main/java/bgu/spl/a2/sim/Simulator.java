@@ -57,13 +57,14 @@ public class Simulator {
 		Warehouse warehouse=Warehouse.getInstance(computers);
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
-		//flow.add(jsonInput.getPhase1());
+		flow.add(jsonInput.getPhase1());
 		flow.add(jsonInput.getPhase2());
-		//flow.add(jsonInput.getPhase3());
+		flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
-
+		int i=0;
 		for(List<ActionParsing> phase : flow) {
+			System.out.println("Phase"+ ++i);
 			int counter = phase.size();
 			CountDownLatch count = new CountDownLatch(counter);
 			for (ActionParsing act : phase) {
@@ -251,7 +252,7 @@ public class Simulator {
 			System.out.println("Can't parse JSON file");
 		}
 		//try with resources
-		try(FileOutputStream fout=new FileOutputStream("result.ser");ObjectOutputStream oos=new ObjectOutputStream(fout);){
+		try(FileOutputStream fout=new FileOutputStream("result.ser");ObjectOutputStream oos=new ObjectOutputStream(fout)){
 
 			oos.writeObject(end());
 		}
