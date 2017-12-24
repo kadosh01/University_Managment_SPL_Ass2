@@ -49,9 +49,11 @@ public abstract class Action<R> {
            _privateState= actorState;
            _firstHandle= false;
            start();
+           System.out.println(_actorID+" : "+_actionName+" status : start by - "+ Thread.currentThread().getName());
        }
        else{
            _callback.call();
+           System.out.println(_actorID+" : "+_actionName+" status : continue by - "+ Thread.currentThread().getName());
        }
     }
     
@@ -90,8 +92,9 @@ public abstract class Action<R> {
      */
     protected final void complete(R result) {
        _promise.resolve(result);
-       _pool.setWorkOn(_actorID,false); //change the state of the current actor
+       //_pool.setWorkOn(_actorID,false); //change the state of the current actor
 
+        System.out.println(_actorID+" : "+_actionName+" status : complete by - "+ Thread.currentThread().getName());
     }
     
     /**
@@ -113,11 +116,9 @@ public abstract class Action<R> {
 	 *    
      * @return promise that will hold the result of the sent action
      */
-    //returns null if action is null
 	public Promise<?> sendMessage(Action<?> action, String actorId, PrivateState actorState){
         _pool.submit(action,actorId,actorState);
-        if(action==null)
-            return null;
+        System.out.println(_actorID+" : "+_actionName+" status : send message to "+actorId+" by - "+ Thread.currentThread().getName());
         return action.getResult();
     }
 	

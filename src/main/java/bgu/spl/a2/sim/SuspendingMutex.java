@@ -38,6 +38,7 @@ public class SuspendingMutex {
 	 * @return a promise for the requested computer
 	 */
 	public Promise<Computer> down(){
+		System.out.print(_computer.computerType+" : available "+isFree+" taken  by - "+ Thread.currentThread().getName());
 		if(isFree){
 			isFree= false;
 			Promise<Computer> comp= new Promise<>();
@@ -56,6 +57,7 @@ public class SuspendingMutex {
 	 */
 	public void up(){
 		isFree= true;
+		System.out.println(_computer.computerType+" : available "+isFree+" was free  by - "+ Thread.currentThread().getName());
 		try {
 			_promises.remove().resolve(_computer);
 		}
