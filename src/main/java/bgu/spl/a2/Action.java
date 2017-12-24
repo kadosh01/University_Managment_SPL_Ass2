@@ -14,13 +14,13 @@ import java.util.Collection;
  * @param <R> the action result type
  */
 public abstract class Action<R> {
-    protected String _actionName;
+    protected String _actionName="Empty";
     protected Promise<R> _promise=new Promise<>();
     protected int _callback_count=0;
     protected callback _callback;
     protected ActorThreadPool _pool;
     protected PrivateState _privateState;
-    protected String _actorID;
+    protected String _actorID="Empty actor";
     private boolean _firstHandle=true;
 
 	/**
