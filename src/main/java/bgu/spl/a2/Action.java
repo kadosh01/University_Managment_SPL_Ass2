@@ -113,8 +113,11 @@ public abstract class Action<R> {
 	 *    
      * @return promise that will hold the result of the sent action
      */
+    //returns null if action is null
 	public Promise<?> sendMessage(Action<?> action, String actorId, PrivateState actorState){
         _pool.submit(action,actorId,actorState);
+        if(action==null)
+            return null;
         return action.getResult();
     }
 	

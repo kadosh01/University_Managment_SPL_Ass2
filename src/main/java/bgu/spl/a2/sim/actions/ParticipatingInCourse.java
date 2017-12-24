@@ -13,6 +13,7 @@ import java.util.List;
 public class ParticipatingInCourse extends Action<Boolean> {
     protected String _studentId;
     protected Integer _grade;
+
     public ParticipatingInCourse(String studentId,String courseName,Integer grade)
     {
         setActionName("Participate In Course");
@@ -23,12 +24,12 @@ public class ParticipatingInCourse extends Action<Boolean> {
 
     @Override
     protected void start() {
-        if (((CoursePrivateState) _privateState).inc()) { //check if there is available place in the course.
+        if (((CoursePrivateState)_privateState).inc()) { //check if there is available place in the course.
             List<Action<Boolean>> actions = new LinkedList<>();
             actions.add(new Action<Boolean>() { // new action child : add the course to student's grades list.
                 @Override
                 protected void start() {
-                    StudentPrivateState sps=(StudentPrivateState) _pool.getActors().get(_studentId);
+                    StudentPrivateState sps=(StudentPrivateState)_pool.getActors().get(_studentId);
                     List<String> pre= ((CoursePrivateState) _privateState).getPrequisites();
                     boolean canRegister= true;
                     for(String prerequisite: pre){

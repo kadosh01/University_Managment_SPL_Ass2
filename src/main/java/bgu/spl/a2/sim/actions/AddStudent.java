@@ -6,12 +6,11 @@ import bgu.spl.a2.sim.privateStates.StudentPrivateState;
 
 public class AddStudent extends Action<Boolean>{
     protected String _studentId;
-    protected String _departmentName;
 
     public AddStudent(String studentId, String departmentName){
         setActionName("Add Student");
         _studentId= studentId;
-        _departmentName= departmentName;
+        _actorID= departmentName;
     }
 
     @Override
