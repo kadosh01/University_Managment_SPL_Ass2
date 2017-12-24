@@ -2,7 +2,7 @@ package bgu.spl.a2.Gson;
 
 import java.util.List;
 
-public class Action {
+public class ActionParsing {
 
     private String Action;
     private String Department;

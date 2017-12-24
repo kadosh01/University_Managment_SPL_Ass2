@@ -24,6 +24,9 @@ public class StudentPrivateState extends PrivateState{
 	public HashMap<String, Integer> getGrades() {
 		return grades;
 	}
+	public Integer getGrade(String course) {
+		return grades.get(course);
+	}
 
 	public long getSignature() {
 		return signature;

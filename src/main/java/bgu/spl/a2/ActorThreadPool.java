@@ -5,6 +5,7 @@ import java.util.*;
 import java.lang.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * represents an actor thread pool - to understand what this class does please
@@ -20,9 +21,9 @@ public class ActorThreadPool {
 	private int nthreads; // number of thread
 	private ConcurrentHashMap<String,Queue<Action>> _actionsList;
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
-	protected ConcurrentHashMap<String,Boolean> _workonList;
+	protected ConcurrentHashMap<String,AtomicBoolean> _workonList;
 	private Thread[] pool;
-	private boolean finish = false;
+	private volatile boolean finish ;
 	private VersionMonitor vm;
 	/**
 	 * creates a {@link ActorThreadPool} which has nthreads. Note, threads
@@ -37,6 +38,7 @@ public class ActorThreadPool {
 	 *            pool
 	 */
 	public ActorThreadPool(int nthreads) {
+		finish=false;
 		this.nthreads=nthreads;
 		_actionsList=new ConcurrentHashMap<>() ;
 		_privatestateList = new ConcurrentHashMap<>();
@@ -45,16 +47,18 @@ public class ActorThreadPool {
 		vm= new VersionMonitor();
 		for(int i=0; i<pool.length; i++){
 			pool[i]= new Thread(() -> {
-                while(!finish){
+                while(!Thread.currentThread().isInterrupted()){
 			        int version= vm.getVersion();
                     Set<String> actors= _actionsList.keySet();
                     for(String id : actors){
-                        if( _workonList.get(id)!=null && !_workonList.get(id)){
+                        if( _workonList.get(id)!=null && setWorkOn(id,true) ){ // change this : !_workonList.get(id).get()
                             if(_actionsList.get(id).size()>0){
                             	try {
+
 									Queue<Action> actor_actions = _actionsList.get(id);
 									actor_actions.remove().handle(this, id, _privatestateList.get(id));
-									_workonList.put(id, true); //check if the value changes
+									//_workonList.put(id, true); //check if the value changes
+									setWorkOn(id,false);
 								}
 								catch (NoSuchElementException e){
 
@@ -68,6 +72,7 @@ public class ActorThreadPool {
                         e.printStackTrace();
                     }
                 }
+                System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
             });
 		}
 	}
@@ -105,19 +110,22 @@ public class ActorThreadPool {
         if (_actionsList.containsKey(actorId)){
         	if(action!=null) {
 				_actionsList.get(actorId).add(action);
+				getPrivateState(actorId).addRecord(action.getActionName());
 				vm.inc();
 			}
         }
         else{
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
-            if(action!=null)
-            	newActor.add(action);
+            if(action!=null) {
+				newActor.add(action);
+				actorState.addRecord(action.getActionName());
+			}
             _actionsList.putIfAbsent(actorId,newActor); // change put to putifabsent
             _privatestateList.putIfAbsent(actorId,actorState);// change put to putifabsent
-            _workonList.putIfAbsent(actorId,false);// change put to putifabsent
+             _workonList.putIfAbsent(actorId,new AtomicBoolean(false));// change put to putifabsent
 			vm.inc();
         }
-		System.out.println(action.getActionName()+"Action submitted");
+        	System.out.println("Open Course Action submitted by : "+Thread.currentThread().getName());
 	}
 
 	/**
@@ -131,10 +139,13 @@ public class ActorThreadPool {
 	 *             if the thread that shut down the threads is interrupted
 	 */
 	public void shutdown() throws InterruptedException {
-		finish= true;
+		//finish= true;
 		vm.inc();
-		for(int i=0; i<pool.length; i++)
-			pool[i].join();
+		for(int i=0; i<pool.length; i++) {
+			pool[i].interrupt();
+			//pool[i].join();
+			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+		}
 	}
 
 	/**
@@ -145,8 +156,9 @@ public class ActorThreadPool {
 			pool[i].start();
 	}
 
-	public void setWorkOn(String actorId, boolean state)
+	 public boolean setWorkOn(String actorId, boolean state)
 	{
-		_workonList.put(actorId,state);
+		return _workonList.get(actorId).compareAndSet(!state,state);
+
 	}
 }

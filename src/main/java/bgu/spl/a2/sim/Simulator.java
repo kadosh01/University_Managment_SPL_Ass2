@@ -5,11 +5,18 @@
  */
 package bgu.spl.a2.sim;
 import java.util.HashMap;
+
+import bgu.spl.a2.Action;
 import bgu.spl.a2.ActorThreadPool;
+import bgu.spl.a2.Gson.ActionParsing;
 import bgu.spl.a2.PrivateState;
+import bgu.spl.a2.sim.actions.*;
+import bgu.spl.a2.sim.*;
+import bgu.spl.a2.sim.privateStates.CoursePrivateState;
+import bgu.spl.a2.sim.privateStates.DepartmentPrivateState;
+import bgu.spl.a2.sim.privateStates.StudentPrivateState;
 import com.google.gson.Gson;
 import bgu.spl.a2.Gson.Computer;
-import bgu.spl.a2.Gson.Action;
 import bgu.spl.a2.Gson.Reader;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,6 +26,8 @@ import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CountDownLatch;
 
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
@@ -47,39 +56,95 @@ public class Simulator {
 		}
 		Warehouse warehouse=Warehouse.getInstance(computers);
 		//parsing json Actions
-		List<Action> actionsList=new LinkedList<>();
-		for (Action act:jsonInput.getPhase1() ) {
-			switch (act.getAction()) {
-				case("Open Course"):
-				{
-					break;
-				}
-				case("Add Student"):
+		List<List<ActionParsing>> flow= new LinkedList<>();
+		//flow.add(jsonInput.getPhase1());
+		flow.add(jsonInput.getPhase2());
+		//flow.add(jsonInput.getPhase3());
+
+		actorThreadPool.start();
+
+		for(List<ActionParsing> phase : flow) {
+			int counter = phase.size();
+			CountDownLatch count = new CountDownLatch(counter);
+			for (ActionParsing act : phase) {
+				switch (act.getAction()) {
+					case("Open Course"):
 					{
+						Action openCourse= new OpenCourse(Integer.parseInt(act.getSpace()), act.getPrerequisites(), act.getCourse(), act.getDepartment());
+						actorThreadPool.submit(openCourse, act.getDepartment(), new DepartmentPrivateState());
+						openCourse.getResult().subscribe(()->{
+							count.countDown();
+						});
 						break;
 					}
-				case("Participate In Course"):
-				{
-					break;
+					case("Add Student"):
+					{
+						Action addStudent= new AddStudent(act.getStudent(), act.getDepartment());
+						actorThreadPool.submit(addStudent, act.getDepartment(), new DepartmentPrivateState());
+						addStudent.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					case("Participate In Course"):
+					{
+						int grade;
+						if(act.getGrade().get(0)=="-")
+							grade= -1;
+						else grade= Integer.parseInt(act.getGrade().get(0));
+						Action participate= new ParticipatingInCourse(act.getStudent(), act.getCourse(), grade);
+						actorThreadPool.submit(participate, act.getCourse(), new CoursePrivateState());
+						participate.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					case("Register With Preferences"):
+					{
+						Action register= new RegisterWithPreferences(act.getStudent(), act.getPreferences(), act.getGrade());
+						actorThreadPool.submit(register, act.getStudent(), new StudentPrivateState());
+						register.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					case("Unregister"):
+					{
+						Action unregister= new Unregister(act.getStudent(), act.getCourse());
+						actorThreadPool.submit(unregister, act.getCourse(), new CoursePrivateState());
+						unregister.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					case("Close Course"):
+					{
+						Action close= new CloseACourse(act.getDepartment(), act.getCourse());
+						actorThreadPool.submit(close, act.getDepartment(), new DepartmentPrivateState());
+						close.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					case("Administrative Check"):
+					{
+						Action administrative= new CheckAdministrativeObligations(act.getDepartment(), act.getStudents(), act.getComputer(), act.getConditions());
+						actorThreadPool.submit(administrative, act.getDepartment(), new DepartmentPrivateState());
+						administrative.getResult().subscribe(()->{
+							count.countDown();
+						});
+						break;
+					}
+					default: count.countDown();
 				}
-				case("Register With Preferences"):
-				{
-					break;
-				}
-				case("Unregister"):
-				{
-					break;
-				}
-				case("Close Course"):
-				{
-					break;
-				}
-				case("Administrative Check"):
-				{
-					break;
-				}
-				default:
 			}
+			try{
+				count.await();
+			}
+			catch (InterruptedException e){
+
+			}
+
 		}
     }
 	
@@ -97,11 +162,78 @@ public class Simulator {
 	* returns list of private states
 	*/
 	public static HashMap<String,PrivateState> end(){
-		//TODO: replace method body with real implementation
-		throw new UnsupportedOperationException("Not Implemented Yet.");
+		HashMap<String, PrivateState> result=new HashMap<>();
+		try {
+			actorThreadPool.shutdown();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		for(ConcurrentHashMap.Entry<String,PrivateState> entry : actorThreadPool.getActors().entrySet()){
+			result.put(entry.getKey(),entry.getValue());
+		}
+
+		return  result;
+
 	}
-	
-	
+/*
+	private static void parsing(List<Action> Phase, List<bgu.spl.a2.Action> outPhase,CountDownLatch count){
+		for (Action act: Phase ) {
+			switch (act.getAction()) {
+				case("Open Course"):
+				{
+					OpenCourse action=new OpenCourse(act.getSpace(),act.getPrerequisites(),act.getAction(),act.getDepartment());
+					actorThreadPool.submit(action,act.getDepartment(),new DepartmentPrivateState());
+					action.getResult().subscribe(()->{
+						count.countDown();
+					});
+					// outPhase.add(action);
+					break;
+				}
+				case("Add Student"):
+				{
+					AddStudent action=new AddStudent(act.getStudent(),act.getDepartment());
+					actorThreadPool.submit(action,act.getDepartment(),new DepartmentPrivateState());
+					action.getResult().subscribe(()->{
+						count.countDown();
+					});
+					//outPhase.add(action);
+					break;
+				}
+				case("Participate In Course"):
+				{
+					ParticipatingInCourse action=new ParticipatingInCourse(act.getStudent(),act.getCourse(),new Integer(act.getGrade().get(0)));
+					outPhase.add(action);
+					break;
+				}
+				case("Register With Preferences"):
+				{
+					RegisterWithPreferences action=new RegisterWithPreferences(act.getStudent(),act.getPreferences(),act.getGrade());
+					outPhase.add(action);
+					break;
+				}
+				case("Unregister"):
+				{
+					Unregister action=new Unregister(act.getStudent(),act.getCourse());
+					outPhase.add(action);
+					break;
+				}
+				case("Close Course"):
+				{
+					CloseACourse action=new CloseACourse(act.getDepartment(),act.getCourse());
+					outPhase.add(action);
+					break;
+				}
+				case("Administrative Check"):
+				{
+					CheckAdministrativeObligations action=new CheckAdministrativeObligations(act.getDepartment(),act.getStudents(),act.getComputer(),act.getConditions());
+					outPhase.add(action);
+					break;
+				}
+				default:
+			}
+		}
+	}
+	*/
 	public static void main(String [] args){
 		Gson gson = new Gson();
 		Type type = new TypeToken<Reader>() {}.getType();
@@ -118,5 +250,12 @@ public class Simulator {
 		catch(FileNotFoundException e){
 			System.out.println("Can't parse JSON file");
 		}
+		//try with resources
+		try(FileOutputStream fout=new FileOutputStream("result.ser");ObjectOutputStream oos=new ObjectOutputStream(fout);){
+
+			oos.writeObject(end());
+		}
+		catch (IOException e){System.out.println(e.getMessage());}
+
 	}
 }

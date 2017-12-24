@@ -21,13 +21,20 @@ public class OpenCourse extends Action<Boolean>{
         _availableSpaces=availableSpaces;
         _prerequisites=prerequisites;
         setActionName("Open Course");
+        _privateState=new DepartmentPrivateState(); // if the department dose'nt exist we will open one.
     }
     public void start()
     {
         CoursePrivateState cps= new CoursePrivateState();
         cps.setAvailableSpots(_availableSpaces);
         cps.setPrerequisites(_prerequisites);
-        sendMessage(null,_courseName,cps);
+        sendMessage(new Action<Boolean>() {
+
+            @Override
+            protected void start() {
+                complete(true);
+            }
+        }, _courseName, cps);
         ((DepartmentPrivateState)_privateState).addCourse(_courseName);
         complete(true);
 
