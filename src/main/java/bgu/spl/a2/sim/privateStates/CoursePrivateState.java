@@ -8,7 +8,7 @@ import bgu.spl.a2.PrivateState;
 /**
  * this class describe course's private state
  */
-public class CoursePrivateState extends PrivateState{
+public class CoursePrivateState extends PrivateState implements java.io.Serializable{
 
 	private Integer availableSpots;
 	private Integer registered;

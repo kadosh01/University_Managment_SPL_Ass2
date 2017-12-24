@@ -7,7 +7,7 @@ import bgu.spl.a2.PrivateState;
 /**
  * this class describe student private state
  */
-public class StudentPrivateState extends PrivateState{
+public class StudentPrivateState extends PrivateState implements java.io.Serializable{
 
 	private HashMap<String, Integer> grades;
 	private long signature;

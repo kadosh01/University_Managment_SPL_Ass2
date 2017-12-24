@@ -1,5 +1,6 @@
 package bgu.spl.a2.sim.privateStates;
 
+import java.io.Serializable;
 import java.util.Dictionary;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +10,9 @@ import bgu.spl.a2.PrivateState;
 /**
  * this class describe department's private state
  */
-public class DepartmentPrivateState extends PrivateState{
-	private List<String> courseList;
+public class DepartmentPrivateState extends PrivateState implements Serializable {
+	private static final long serialVersionUID = 1L;
+	private  List<String> courseList;
 	private List<String> studentList;
 	
 	/**
