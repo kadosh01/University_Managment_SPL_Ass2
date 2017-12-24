@@ -19,7 +19,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class ActorThreadPool {
 	private int nthreads; // number of thread
-	private ConcurrentHashMap<String,Queue<Action>> _actionsList;
+	public ConcurrentHashMap<String,Queue<Action>> _actionsList;
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
 	protected ConcurrentHashMap<String,AtomicBoolean> _workonList;
 	private Thread[] pool;
@@ -53,22 +53,21 @@ public class ActorThreadPool {
                     for(String id : actors){
                         if( _workonList.get(id)!=null && setWorkOn(id,true) ){ // change this : !_workonList.get(id).get()
                             if(_actionsList.get(id).size()>0){
-									Queue<Action> actor_actions = _actionsList.get(id);
-									actor_actions.poll().handle(this, id, _privatestateList.get(id));
-									//_workonList.put(id, true); //check if the value changes
+								Queue<Action> actor_actions = _actionsList.get(id);
+								actor_actions.poll().handle(this, id, _privatestateList.get(id));
+								//_workonList.put(id, true); //check if the value changes
                             }
-									setWorkOn(id,false);
-									vm.inc();
+							setWorkOn(id,false);
+							vm.inc();
                         }
                     }
                     try {
                         vm.await(version);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
                         Thread.currentThread().interrupt();
                     }
                 }
-                System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
+                //System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
             });
 		}
 	}
@@ -138,9 +137,10 @@ public class ActorThreadPool {
 
 		for(int i=0; i<pool.length; i++) {
 			pool[i].interrupt();
-			//pool[i].join(); ???
-			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+			//pool[i].join();
+			//System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
+		//System.out.println("---shutdown---  num of actions: "+_actionsList.size());
 	}
 
 	/**

@@ -26,7 +26,7 @@ public class AddStudent extends Action<Boolean>{
 
                 complete(true);
             }
-        }, _studentId, _privateState);
+        }, _studentId, sps);
         ((DepartmentPrivateState)_privateState).addStudent(_studentId);
         complete(true);
     }
