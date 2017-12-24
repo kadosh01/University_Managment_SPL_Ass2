@@ -58,7 +58,7 @@ public class Simulator {
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
 		flow.add(jsonInput.getPhase1());
-		//flow.add(jsonInput.getPhase2());
+		flow.add(jsonInput.getPhase2());
 		//flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
@@ -174,6 +174,7 @@ public class Simulator {
 		HashMap<String, PrivateState> result=new HashMap<>();
 		try {
 			actorThreadPool.shutdown();
+			System.out.println("---shutdown---  num of actions: "+actorThreadPool._actionsList.size());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -250,7 +251,7 @@ public class Simulator {
 			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			System.out.println("Reader");
-			ActorThreadPool atp= new ActorThreadPool(1);//Integer.parseInt(reader.getThreads()));
+			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
 			start(); //calling start()
@@ -263,6 +264,7 @@ public class Simulator {
 		try(FileOutputStream fout=new FileOutputStream("result.ser");ObjectOutputStream oos=new ObjectOutputStream(fout);){
 
 			oos.writeObject(end());
+
 		}
 		catch (IOException e){System.out.println(e.getMessage());}
 
