@@ -13,11 +13,13 @@ import java.util.List;
  */
 public class CloseACourse extends Action<Boolean>{
     String _courseName;
+
     public CloseACourse(String department,String courseName){
         _courseName=courseName;
         _actorID=department;
         setActionName("Close Course");
     }
+
     @Override
     protected void start() {
         List<Action<Boolean>> actions=new LinkedList<>();

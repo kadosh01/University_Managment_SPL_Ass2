@@ -125,7 +125,7 @@ public class ActorThreadPool {
              _workonList.putIfAbsent(actorId,new AtomicBoolean(false));// change put to putifabsent
 			vm.inc();
         }
-        	System.out.println(action._actionName+" Action submitted by : "+Thread.currentThread().getName());
+        	System.out.println(action.getActionName()+" Action submitted by actor: "+actorId+" by thread: "+Thread.currentThread().getName());
 	}
 
 	/**

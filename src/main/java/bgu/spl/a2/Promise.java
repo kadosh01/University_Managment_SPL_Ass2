@@ -87,7 +87,7 @@ public class Promise<T>{
 		callbacks.add(callback);
 		if(isResolved()){
 			callback.call();
-			callbacks.remove(callback);
+			callbacks.remove(callback); // add synchronize??
 		}
 	}
 }
