@@ -53,23 +53,18 @@ public class ActorThreadPool {
                     for(String id : actors){
                         if( _workonList.get(id)!=null && setWorkOn(id,true) ){ // change this : !_workonList.get(id).get()
                             if(_actionsList.get(id).size()>0){
-                            	try {
+								Queue<Action> actor_actions = _actionsList.get(id);
+								actor_actions.remove().handle(this, id, _privatestateList.get(id));
+								//_workonList.put(id, true); //check if the value changes
+								setWorkOn(id,false);
 
-									Queue<Action> actor_actions = _actionsList.get(id);
-									actor_actions.remove().handle(this, id, _privatestateList.get(id));
-									//_workonList.put(id, true); //check if the value changes
-									setWorkOn(id,false);
-								}
-								catch (NoSuchElementException e){
-
-								}
                             }
                         }
                     }
                     try {
                         vm.await(version);
                     } catch (InterruptedException e) {
-                        e.printStackTrace();
+                        Thread.currentThread().interrupt();
                     }
                 }
                 System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
@@ -140,11 +135,11 @@ public class ActorThreadPool {
 	 */
 	public void shutdown() throws InterruptedException {
 		//finish= true;
-		vm.inc();
+		//vm.inc();
 		for(int i=0; i<pool.length; i++) {
 			pool[i].interrupt();
 			//pool[i].join();
-			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+			System.out.println("-shutdown-  "+pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
 	}
 
@@ -154,6 +149,17 @@ public class ActorThreadPool {
 	public void start() {
 		for(int i=0; i<pool.length; i++)
 			pool[i].start();
+		/*
+		while(true){
+			for(int i=0; i<pool.length; i++)
+				System.out.println(pool[i].getState());
+			try {
+				Thread.currentThread().wait(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+		*/
 	}
 
 	 public boolean setWorkOn(String actorId, boolean state)

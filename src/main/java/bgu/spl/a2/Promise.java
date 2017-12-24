@@ -42,7 +42,7 @@ public class Promise<T>{
 	 *         {@link #resolve(java.lang.Object)} has been called on this object
 	 *         before.
 	 */
-	public boolean isResolved() {
+	public synchronized boolean isResolved() {
 		return result!=null;
 	}
 
@@ -83,7 +83,7 @@ public class Promise<T>{
 	 * @param callback
 	 *            the callback to be called when the promise object is resolved
 	 */
-	public void subscribe(callback callback) {
+	public synchronized void subscribe(callback callback) {
 		callbacks.add(callback);
 		if(isResolved()){
 			callback.call();
