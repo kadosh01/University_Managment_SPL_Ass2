@@ -2,7 +2,9 @@ package bgu.spl.a2.Gson;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Computer {
+import java.io.Serializable;
+
+public class Computer implements Serializable {
 
     private String Type;
     @SerializedName("Sig Success")

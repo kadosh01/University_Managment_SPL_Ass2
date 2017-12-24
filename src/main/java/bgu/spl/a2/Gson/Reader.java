@@ -2,9 +2,10 @@ package bgu.spl.a2.Gson;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Reader {
+public class Reader implements Serializable {
 
     private String threads;
     private List<Computer> Computers;

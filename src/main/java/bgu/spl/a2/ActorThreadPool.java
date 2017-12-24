@@ -135,11 +135,10 @@ public class ActorThreadPool {
 	 *             if the thread that shut down the threads is interrupted
 	 */
 	public void shutdown() throws InterruptedException {
-		//finish= true;
-		//vm.inc();
+
 		for(int i=0; i<pool.length; i++) {
 			pool[i].interrupt();
-			//pool[i].join();
+			//pool[i].join(); ???
 			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
 	}

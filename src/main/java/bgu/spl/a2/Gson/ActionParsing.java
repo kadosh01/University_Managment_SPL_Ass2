@@ -1,8 +1,9 @@
 package bgu.spl.a2.Gson;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ActionParsing {
+public class ActionParsing implements Serializable {
 
     private String Action;
     private String Department;

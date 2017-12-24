@@ -1,11 +1,8 @@
-package bgu.spl.a2.sim;
+package bgu.spl.a2;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 import java.util.HashMap;
+import java.util.Vector;
 
 import bgu.spl.a2.PrivateState;
 import com.google.gson.Gson;
@@ -14,16 +11,18 @@ import bgu.spl.a2.sim.privateStates.CoursePrivateState;
 import bgu.spl.a2.sim.privateStates.DepartmentPrivateState;
 import bgu.spl.a2.sim.privateStates.StudentPrivateState;
 
-public class checkResultSer {
+public class checkResultSer implements Serializable {
+	private static final long serialVersionUID = 1L;
 	public static void main(String[] args) throws IOException, ClassNotFoundException{
 		FileInputStream fr;
 		ObjectInputStream ois;
 		Gson gson = new Gson();
 		HashMap<String, PrivateState> res = new HashMap<>();
+		Vector<PrivateState> p =new Vector<>();
 		try {
 			fr = new FileInputStream("result.ser");
 			ois = new ObjectInputStream(fr);
-			res = (HashMap<String, PrivateState>) ois.readObject();
+			res=(HashMap<String, PrivateState>) ois.readObject();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
