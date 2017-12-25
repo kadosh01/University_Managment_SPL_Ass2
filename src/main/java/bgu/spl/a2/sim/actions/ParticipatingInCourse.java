@@ -24,7 +24,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
 
     @Override
     protected void start() {
-        if (((CoursePrivateState)_privateState).inc()) { //check if there is available place in the course.
+         //check if there is available place in the course.
             List<Action<Boolean>> actions = new LinkedList<>();
             String course= _actorID;
             Integer grade= _grade;
@@ -42,13 +42,11 @@ public class ParticipatingInCourse extends Action<Boolean> {
                         }
                     }
                     if(canRegister) {
-                        sps.getGrades().put(course, grade);
-                        System.out.println(("FINISH TRUE"));
+                        //sps.getGrades().put(course, grade);
                         complete(true);
                     }
                     else{
-                        System.out.println(("FINISH FALSE"));
-                        complete(false);
+                        complete(false);//in case student doesn't meet the prerequisites
                     }
                 }
             });
@@ -56,18 +54,31 @@ public class ParticipatingInCourse extends Action<Boolean> {
             sendMessage(actions.get(0),_studentId,new StudentPrivateState());
             then(actions,()->{
                 if(actions.get(0).getResult().get()){
-                    ((CoursePrivateState)_privateState).addStudent(_studentId);
-                    complete(true);
+                    if(((CoursePrivateState) _privateState).inc()) {
+                        List<Action<Boolean>> actions2= new LinkedList<>();
+                        actions2.add(new Action<Boolean>() {
+                            @Override
+                            protected void start() {
+                                StudentPrivateState sps=(StudentPrivateState)_pool.getActors().get(_studentId);
+                                sps.getGrades().put(course, grade);
+                                complete(true);
+                            }
+                        });
+                        sendMessage(actions2.get(0),_studentId,new StudentPrivateState());
+                        then(actions2, ()->{
+                            ((CoursePrivateState) _privateState).addStudent(_studentId);
+                            complete(true);
+                        });
+                    }
+                    else{
+                        complete(false); //in case there are no available spots
+                    }
                 }
                 else {
-                    ((CoursePrivateState) _privateState).dec();
-                    complete(false);
+                    complete(false); //in case the previous action returned false
                 }
             });
-        }//END IF
-        else{
-            complete(false);
-        }
+
     }
 
 }
