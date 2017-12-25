@@ -53,8 +53,9 @@ public class CoursePrivateState extends PrivateState implements java.io.Serializ
 	}
 
 	public boolean inc(){
-		if(availableSpots>registered) {
+		if(availableSpots>0) {
 			registered = new Integer(registered.intValue() + 1);
+			availableSpots= new Integer(availableSpots.intValue()-1);
 			return true;
 		}
 		return false;
@@ -62,14 +63,16 @@ public class CoursePrivateState extends PrivateState implements java.io.Serializ
 	public boolean dec(){
 		if(registered>0) {
 			registered = new Integer(registered.intValue() - 1);
+			availableSpots= new Integer(availableSpots.intValue()+1);
 			return true;
 		}
 		return false;
 	}
 
 	public void addStudent(String studentName){
-		if(!regStudents.contains(studentName))
+		if(!regStudents.contains(studentName)){
 			regStudents.add(studentName);
+		}
 	}
 	public void removeStudent(String studentName){
 		if(regStudents.contains(studentName))
