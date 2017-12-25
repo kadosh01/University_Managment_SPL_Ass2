@@ -60,8 +60,8 @@ public class Simulator {
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
 		flow.add(jsonInput.getPhase1());
-		//flow.add(jsonInput.getPhase2());
-		//flow.add(jsonInput.getPhase3());
+		flow.add(jsonInput.getPhase2());
+		flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
 		int i=0;
