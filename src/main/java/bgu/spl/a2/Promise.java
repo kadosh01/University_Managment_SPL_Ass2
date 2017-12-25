@@ -17,7 +17,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @param <T>
  *            the result type, <boolean> resolved - initialized ;
  */
-public class Promise<T>{
+public class Promise<T> implements java.io.Serializable{
 
 	private T result;
 	private ConcurrentLinkedQueue<callback> callbacks= new ConcurrentLinkedQueue<callback>();
