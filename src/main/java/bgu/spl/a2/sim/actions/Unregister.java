@@ -20,12 +20,13 @@ public class Unregister extends Action<Boolean>{
     protected void start() {
         if(((CoursePrivateState)_privateState).getRegStudents().contains(_studentId)){
             ((CoursePrivateState)_privateState).dec();
+            String course= _actorID;
             List<Action<Boolean>> actions= new LinkedList<>();
             actions.add(new Action<Boolean>() {
                 @Override
                 protected void start() {
                     StudentPrivateState sps= (StudentPrivateState)_pool.getActors().get(_studentId);
-                    sps.getGrades().remove(_actorID);
+                    sps.getGrades().remove(course);
                     complete(true);
                 }
             });
@@ -40,6 +41,9 @@ public class Unregister extends Action<Boolean>{
                    complete(false);
                }
             });
+        }
+        else{
+            complete(false);
         }
     }
 }
