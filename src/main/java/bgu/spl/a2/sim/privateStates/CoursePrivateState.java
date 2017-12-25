@@ -52,7 +52,7 @@ public class CoursePrivateState extends PrivateState implements java.io.Serializ
 		prequisites= pre;
 	}
 
-	public boolean inc(){
+	 public boolean inc(){
 		if(availableSpots>0) {
 			registered = new Integer(registered.intValue() + 1);
 			availableSpots= new Integer(availableSpots.intValue()-1);
