@@ -6,10 +6,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Promise.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Promise.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Promise.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/ParticipatingInCourse.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/ParticipatingInCourse.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -891,7 +887,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514156707694</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="19:47">
+      <created>1514224059405</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1514224059405</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -924,7 +927,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4209000" />
+    <option name="totallyTimeSpent" value="4225000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -999,7 +1002,8 @@
     <MESSAGE value="00:52" />
     <MESSAGE value="01:03" />
     <MESSAGE value="01:04" />
-    <option name="LAST_COMMIT_MESSAGE" value="01:04" />
+    <MESSAGE value="19:47" />
+    <option name="LAST_COMMIT_MESSAGE" value="19:47" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
