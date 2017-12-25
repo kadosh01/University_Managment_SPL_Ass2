@@ -26,13 +26,12 @@ public class ParticipatingInCourse extends Action<Boolean> {
     protected void start() {
         if (((CoursePrivateState)_privateState).inc()) { //check if there is available place in the course.
             List<Action<Boolean>> actions = new LinkedList<>();
-            String course= _actorID;
-            Integer grade= _grade;
-            List<String> pre= ((CoursePrivateState)_privateState).getPrequisites();
+            CoursePrivateState course= (CoursePrivateState)_privateState;
             actions.add(new Action<Boolean>() { // new action child : add the course to student's grades list.
                 @Override
                 protected void start() {
                     StudentPrivateState sps=(StudentPrivateState)_pool.getActors().get(_studentId);
+                    List<String> pre= course.getPrequisites();
                     boolean canRegister= true;
                     for(String prerequisite: pre){
                         if(!sps.getGrades().containsKey(prerequisite)){
@@ -41,7 +40,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
                         }
                     }
                     if(canRegister) {
-                        sps.getGrades().put(course, grade);
+                        sps.getGrades().put(_actorID, _grade);
                         complete(true);
                     }
                     else{
@@ -61,9 +60,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
                 }
             });
         }//END IF
-        else{
-            complete(false);
-        }
+
     }
 
 }

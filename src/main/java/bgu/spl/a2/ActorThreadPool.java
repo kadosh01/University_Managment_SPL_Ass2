@@ -25,6 +25,8 @@ public class ActorThreadPool {
 	private Thread[] pool;
 	private volatile boolean finish ;
 	private VersionMonitor vm;
+
+	private static ActorThreadPool ac;
 	/**
 	 * creates a {@link ActorThreadPool} which has nthreads. Note, threads
 	 * should not get started until calling to the {@link #start()} method.
@@ -38,6 +40,8 @@ public class ActorThreadPool {
 	 *            pool
 	 */
 	public ActorThreadPool(int nthreads) {
+		ac=this;
+
 		finish=false;
 		this.nthreads=nthreads;
 		_actionsList=new ConcurrentHashMap<>() ;
@@ -166,4 +170,6 @@ public class ActorThreadPool {
 		return _workonList.get(actorId).compareAndSet(!state,state);
 
 	}
+
+	static public ActorThreadPool getinstance(){return ac;}
 }
