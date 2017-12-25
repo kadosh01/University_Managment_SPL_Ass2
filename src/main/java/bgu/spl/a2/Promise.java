@@ -63,11 +63,12 @@ public class Promise<T>{
 	public void resolve(T value){
 		if(isResolved())
 			throw new IllegalStateException("already resolved");
+		result= value;
 		for(callback cal: callbacks){
 			cal.call();
 			callbacks.remove(cal);
 		}
-		result= value;
+
 	}
 
 	/**

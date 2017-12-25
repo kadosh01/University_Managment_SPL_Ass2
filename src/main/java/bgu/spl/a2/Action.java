@@ -117,7 +117,7 @@ public abstract class Action<R> {
      */
     public Promise<?> sendMessage(Action<?> action, String actorId, PrivateState actorState) {
         _pool.submit(action, actorId, actorState);
-        System.out.println(_actorID + " : " + _actionName + " status : send message to " + actorId + " by - " + Thread.currentThread().getName());
+        //System.out.println(_actorID + " : " + _actionName + " status : send message to " + actorId + " by - " + Thread.currentThread().getName());
         return action.getResult();
     }
 

@@ -30,6 +30,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
             Integer grade= _grade;
             List<String> pre= ((CoursePrivateState)_privateState).getPrequisites();
             actions.add(new Action<Boolean>() { // new action child : add the course to student's grades list.
+
                 @Override
                 protected void start() {
                     StudentPrivateState sps=(StudentPrivateState)_pool.getActors().get(_studentId);
@@ -42,13 +43,16 @@ public class ParticipatingInCourse extends Action<Boolean> {
                     }
                     if(canRegister) {
                         sps.getGrades().put(course, grade);
+                        System.out.println(("FINISH TRUE"));
                         complete(true);
                     }
                     else{
+                        System.out.println(("FINISH FALSE"));
                         complete(false);
                     }
                 }
             });
+            System.out.println(_actorID + " : " + _actionName + " status : send message to " + _studentId + " by - " + Thread.currentThread().getName());
             sendMessage(actions.get(0),_studentId,new StudentPrivateState());
             then(actions,()->{
                 if(actions.get(0).getResult().get()){
