@@ -43,7 +43,8 @@ public class Unregister extends Action<Boolean>{
             });
         }
         else{
-            complete(false);
+            sendMessage(this, _actorID, new CoursePrivateState());
+
         }
     }
 }
