@@ -48,18 +48,20 @@ public class Simulator {
     public static void start(){
 		List<bgu.spl.a2.sim.Computer> computers = new LinkedList<>();
 		//parsing json computer
-		for (Computer comp:jsonInput.getComputers() ) {
-			bgu.spl.a2.sim.Computer newComputer= new bgu.spl.a2.sim.Computer(comp.getType());
-			newComputer.setFailSigSig(comp.getSigFail());
-			newComputer.setSuccessSig(comp.getSigSuccess());
-			computers.add(newComputer);
+		if(jsonInput.getComputers()!=null) {
+			for (Computer comp : jsonInput.getComputers()) {
+				bgu.spl.a2.sim.Computer newComputer = new bgu.spl.a2.sim.Computer(comp.getType());
+				newComputer.setFailSigSig(comp.getSigFail());
+				newComputer.setSuccessSig(comp.getSigSuccess());
+				computers.add(newComputer);
+			}
 		}
 		Warehouse warehouse=Warehouse.getInstance(computers);
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
 		flow.add(jsonInput.getPhase1());
-		flow.add(jsonInput.getPhase2());
-		flow.add(jsonInput.getPhase3());
+		//flow.add(jsonInput.getPhase2());
+		//flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
 		int i=0;

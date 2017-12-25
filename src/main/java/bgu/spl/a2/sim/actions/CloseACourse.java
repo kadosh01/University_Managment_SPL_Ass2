@@ -23,15 +23,16 @@ public class CloseACourse extends Action<Boolean>{
     @Override
     protected void start() {
         List<Action<Boolean>> actions=new LinkedList<>();
+        String course= _courseName;
         actions.add(new Action<Boolean>() { //new action child : send action to the course to unregister all the students participate in this course.
             @Override
             protected void start() {
-                CoursePrivateState cps=(CoursePrivateState)_pool.getActors().get(_courseName);
+                CoursePrivateState cps=(CoursePrivateState)_pool.getActors().get(course);
                 List<Action<Boolean>> unregisterActions=new LinkedList<>(); //create unregister action grand kid for each student
                 for (String student :cps.getRegStudents()) {
-                    Unregister unreg= new Unregister(student,_courseName);
+                    Unregister unreg= new Unregister(student,course);
                     unregisterActions.add(unreg);
-                    sendMessage(unreg,_courseName, new CoursePrivateState());
+                    sendMessage(unreg,course, new CoursePrivateState());
 
                 }//end for
                 then(unregisterActions,()->{
@@ -52,7 +53,7 @@ public class CloseACourse extends Action<Boolean>{
         sendMessage(actions.get(0),_courseName,new CoursePrivateState());
         then(actions,()->{
             if(actions.get(0).getResult().get()) {
-                ((DepartmentPrivateState) _privateState).getCourseList().remove(_courseName);
+                ((DepartmentPrivateState)_privateState).getCourseList().remove(_courseName);
                 complete(true);
             }
             else{complete(false);}
