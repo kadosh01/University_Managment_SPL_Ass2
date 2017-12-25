@@ -18,6 +18,7 @@ public class CheckAdministrativeObligations extends Action<Boolean> {
     private String _computerName;
 
     public CheckAdministrativeObligations(String departmentName, List<String> students , String computerName, List<String> conditions){
+       setActionName("Administrative Check");
         _actorID= departmentName;
         _studentsList= students;
         _conditions= conditions;
