@@ -84,7 +84,7 @@ public class Promise<T> implements java.io.Serializable{
 	 * @param callback
 	 *            the callback to be called when the promise object is resolved
 	 */
-	synchronized public void subscribe(callback callback) {
+	 synchronized public void subscribe(callback callback) {
 		callbacks.add(callback);
 		if(isResolved()){
 			callback.call();

@@ -44,6 +44,7 @@ public class Unregister extends Action<Boolean>{
         }
         else{
             complete(false);
+            _privateState.getLogger().remove(_privateState.getLogger().size()-1);
             Unregister action=new Unregister(_studentId,_actorID);
             sendMessage(action, _actorID, new CoursePrivateState());
 
