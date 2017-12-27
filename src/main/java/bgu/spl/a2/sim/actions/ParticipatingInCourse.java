@@ -23,9 +23,12 @@ public class ParticipatingInCourse extends Action<Boolean> {
     }
 
     @Override
-    protected void start() {
+    protected void start() { //check grade!! (in case grade=="-")
          if(((CoursePrivateState)_privateState).getRegStudents().contains(_studentId)){
-             sendMessage(this, _actorID, new CoursePrivateState());
+             complete(false);
+             _privateState.getLogger().remove(_privateState.getLogger().size()-1);
+             ParticipatingInCourse action= new ParticipatingInCourse(_studentId, _actorID, _grade);
+             sendMessage(action, _actorID, new CoursePrivateState());
          }
          else {
              List<Action<Boolean>> actions = new LinkedList<>();
