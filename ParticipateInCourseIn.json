@@ -1,5 +1,6 @@
 {
 "threads": 8,
+<<<<<<< HEAD
 "Computers" : [
 {
 "Type":"A",
@@ -12,6 +13,9 @@
 "Sig Fail": "5555353"
 }
 ],
+=======
+
+>>>>>>> ass2/master
 "Phase 1" : [
 {
 "Action":"Open Course",
@@ -40,6 +44,7 @@
 ],
 "Phase 2" : [
 {
+<<<<<<< HEAD
 "Action": "Participate In Course",
 "Student": "123456789",
 "Course": "Intro To CS",
@@ -48,3 +53,26 @@
 
 ]
 }
+=======
+  "Action": "Participate In Course",
+  "Student": "123456789",
+  "Course": "Intro To CS",
+  "Grade": ["77"]
+}
+],
+"Phase 3" : [
+{
+  "Action": "Participate In Course",
+  "Student": "5959595959",
+  "Course": "SPL",
+  "Grade": ["77"]
+},
+{
+  "Action": "Participate In Course",
+  "Student": "123456789",
+  "Course": "SPL",
+  "Grade": ["77"]
+}
+]
+}
+>>>>>>> ass2/master
