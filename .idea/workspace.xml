@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea10b0ad-f5d5-4724-a87e-d9b379852eca" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result.ser" afterPath="$PROJECT_DIR$/result.ser" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="C:\Users\Joseph\.IntelliJIdea2017.1\Projects\a2\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,6 +143,7 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
+    <option name="UPDATE_CHANGES_POLICY" value="SHELVE" />
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <push-targets>
@@ -937,7 +938,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514244672293</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="01:31">
+      <created>1514415086448</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1514415086448</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -973,7 +981,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7460000" />
+    <option name="totallyTimeSpent" value="7533000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
