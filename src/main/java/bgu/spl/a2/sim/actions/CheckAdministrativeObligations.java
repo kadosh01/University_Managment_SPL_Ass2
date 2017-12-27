@@ -23,6 +23,7 @@ public class CheckAdministrativeObligations extends Action<Boolean> {
         _studentsList= students;
         _conditions= conditions;
         _computerName= computerName;
+        setActionName("Administrative Check");
     }
 
     @Override

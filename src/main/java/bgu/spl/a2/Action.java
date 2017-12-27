@@ -46,9 +46,10 @@ public abstract class Action<R> {
     final void handle(ActorThreadPool pool, String actorId, PrivateState actorState) {
 
         if (_firstHandle) {
+            _firstHandle=false;
             _pool = pool;
             _privateState = actorState;
-            _firstHandle= false;
+            actorState.addRecord(_actionName);
             System.out.println(_actorID + " : " + _actionName + " status : start by - " + Thread.currentThread().getName());
             start();
 

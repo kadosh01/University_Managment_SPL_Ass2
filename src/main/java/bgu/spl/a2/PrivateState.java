@@ -25,6 +25,7 @@ public abstract class PrivateState implements java.io.Serializable{
 	 */
 
 	public void addRecord(String actionName){
+		if(actionName.equals("Administrative Check")){System.out.println("asdasdasdasdasdasd");}
 		history.add(actionName);
 	}
 	

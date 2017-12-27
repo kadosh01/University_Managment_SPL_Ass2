@@ -109,7 +109,7 @@ public class ActorThreadPool {
         if (_actionsList.containsKey(actorId)){
         	if(action!=null) {
 				_actionsList.get(actorId).add(action);
-				getPrivateState(actorId).addRecord(action.getActionName());
+				//getPrivateState(actorId).addRecord(action.getActionName());
 				vm.inc();
 			}
         }
@@ -117,7 +117,7 @@ public class ActorThreadPool {
             ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
             if(action!=null) {
 				newActor.add(action);
-				actorState.addRecord(action.getActionName());
+				//actorState.addRecord(action.getActionName());
 			}
             _actionsList.putIfAbsent(actorId,newActor); // change put to putifabsent
             _privatestateList.putIfAbsent(actorId,actorState);// change put to putifabsent
