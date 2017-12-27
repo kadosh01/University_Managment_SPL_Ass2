@@ -1,0 +1,52 @@
+{
+"threads": 8,
+
+"Phase 1" : [
+{
+"Action":"Open Course",
+"Department": "CS",
+"Course": "Intro To CS",
+"Space": "200",
+"Prerequisites" : []
+},
+{
+"Action":"Open Course",
+"Department": "CS",
+"Course": "SPL",
+"Space": "1",
+"Prerequisites" : ["Intro To CS"]
+},
+{
+"Action": "Add Student",
+"Department": "CS",
+"Student": "123456789"
+},
+{
+"Action": "Add Student",
+"Department": "CS",
+"Student": "5959595959"
+}
+],
+"Phase 2" : [
+{
+  "Action": "Participate In Course",
+  "Student": "123456789",
+  "Course": "Intro To CS",
+  "Grade": ["77"]
+}
+],
+"Phase 3" : [
+{
+  "Action": "Participate In Course",
+  "Student": "5959595959",
+  "Course": "SPL",
+  "Grade": ["77"]
+},
+{
+  "Action": "Participate In Course",
+  "Student": "123456789",
+  "Course": "SPL",
+  "Grade": ["77"]
+}
+]
+}
