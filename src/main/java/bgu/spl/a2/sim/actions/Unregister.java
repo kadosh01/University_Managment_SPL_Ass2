@@ -34,6 +34,7 @@ public class Unregister extends Action<Boolean>{
             if(!((CoursePrivateState)_privateState).getRegStudents().contains(_studentId)){
                 complete(false);
                 Unregister newAction= new Unregister(_studentId, _actorID);
+                _privateState.getLogger().remove(_privateState.getLogger().size()-1);
                 sendMessage(newAction, _actorID, new CoursePrivateState());
             }
             else {

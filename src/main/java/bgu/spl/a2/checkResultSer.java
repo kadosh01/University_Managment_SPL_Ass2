@@ -22,7 +22,7 @@ public class checkResultSer implements Serializable {
 		try {
 			fr = new FileInputStream("result.ser");
 			ois = new ObjectInputStream(fr);
-			res=(HashMap<String, PrivateState>) ois.readObject();
+      			res=(HashMap<String, PrivateState>) ois.readObject();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

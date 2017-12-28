@@ -56,6 +56,11 @@ public class SuspendingMutex {
 	 */
 	public void up(){
 		isFree= true;
-		_promises.remove().resolve(_computer);
+		try {
+			_promises.remove().resolve(_computer);
+		}
+		catch (Exception e){
+
+		}
 	}
 }

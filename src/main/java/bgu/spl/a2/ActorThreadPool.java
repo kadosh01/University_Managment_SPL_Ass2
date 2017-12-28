@@ -144,9 +144,10 @@ public class ActorThreadPool {
 	public void shutdown() throws InterruptedException {
 
 		for(int i=0; i<pool.length; i++) {
-			pool[i].interrupt();
+            //System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+		    pool[i].interrupt();
 			//pool[i].join();
-			//System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
 		//System.out.println("---shutdown---  num of actions: "+_actionsList.size());
 	}

@@ -11,6 +11,7 @@ import bgu.spl.a2.PrivateState;
  * this class describe department's private state
  */
 public class DepartmentPrivateState extends PrivateState implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private  List<String> courseList;
 	private List<String> studentList;
 	
