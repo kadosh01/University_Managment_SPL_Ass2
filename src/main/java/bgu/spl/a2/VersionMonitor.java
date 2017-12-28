@@ -19,19 +19,21 @@ package bgu.spl.a2;
 public class VersionMonitor {
     private int _ver=0;
 
+    //adding synchronization to prevent from threads to access _ver variable while another thread updates it
     public synchronized int getVersion() {
         return _ver;
     }
 
+    //adding synchronization because this method calls notifyAll()
     public synchronized void inc() {
         _ver++;
         notifyAll();
     }
 
+    //adding synchronization because this method calls wait()
     public synchronized void await(int version) throws InterruptedException {
         while(_ver==version) {
             try{
-                System.out.println(Thread.currentThread().getName() + "went to sleep !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 wait();
             }
             catch(InterruptedException e){

@@ -72,8 +72,6 @@ public class ActorThreadPool {
                         Thread.currentThread().interrupt();
                     }
                 }
-				System.out.println(Thread.currentThread().getName() + "finishhhhhhh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                //System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
             });
 		}
 	}
@@ -111,7 +109,6 @@ public class ActorThreadPool {
         if (_actionsList.containsKey(actorId)){
         	if(action!=null) {
 				_actionsList.get(actorId).add(action);
-				//getPrivateState(actorId).addRecord(action.getActionName());
 				vm.inc();
 			}
         }
@@ -119,14 +116,13 @@ public class ActorThreadPool {
             BlockingQueue<Action> newActor =new LinkedBlockingQueue<>();
             if(action!=null) {
 				newActor.add(action);
-				//actorState.addRecord(action.getActionName());
 			}
             _actionsList.putIfAbsent(actorId,newActor); // change put to putifabsent
             _privatestateList.putIfAbsent(actorId,actorState);// change put to putifabsent
              _workonList.putIfAbsent(actorId,new AtomicBoolean(false));// change put to putifabsent
 			vm.inc();
         }
-        	System.out.println(action.getActionName()+" Action submitted by actor: "+actorId+" by thread: "+Thread.currentThread().getName());
+
 	}
 
 	/**
@@ -143,12 +139,8 @@ public class ActorThreadPool {
 
 		for(int i=0; i<pool.length; i++) {
 			pool[i].interrupt();
-			//pool[i].join();
-
-			//System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
 		vm.inc();
-		//System.out.println("---shutdown---  num of actions: "+_actionsList.size());
 	}
 
 	/**
@@ -157,16 +149,6 @@ public class ActorThreadPool {
 	public void start() {
 		for(int i=0; i<pool.length; i++)
 			pool[i].start();
-
-		/*while(true){
-			for(int i=0; i<pool.length; i++)
-			System.out.println(pool[i].getState());
-			try {
-				wait(1000);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}*/
 	}
 
 	 public boolean setWorkOn(String actorId, boolean state)

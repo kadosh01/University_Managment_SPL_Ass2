@@ -5,6 +5,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -19,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SuspendingMutex {
 	
 	private Computer _computer;
-	private boolean isFree;
+	private AtomicBoolean isFree;
 	private Queue<Promise<Computer>> _promises;
 
 	/**
@@ -28,7 +29,7 @@ public class SuspendingMutex {
 	 */
 	public SuspendingMutex(Computer computer){
 		_computer= computer;
-		isFree= true;
+		isFree= new AtomicBoolean(true);
 		_promises= new LinkedBlockingQueue<>();
 	}
 	/**
@@ -37,30 +38,28 @@ public class SuspendingMutex {
 	 * 
 	 * @return a promise for the requested computer
 	 */
-	public synchronized Promise<Computer> down(){ //added synchronized
-		if(isFree){
-			isFree= false;
-			Promise<Computer> comp= new Promise<>();
-			comp.resolve(_computer);
-			return comp;
+
+	public Promise<Computer> down(){ //added synchronized
+		Promise<Computer> comp= new Promise<>();
+		_promises.add(comp);
+		if(isFree.compareAndSet(true,false)){
+		_promises.poll().resolve(_computer);
+			// comp.resolve(_computer);
 		}
-		else{
-			Promise<Computer> comp= new Promise<>();
-			_promises.add(comp);
-			return comp;
-		}
-	}
+
+	return comp;
+}
 	/**
 	 * Computer return procedure
 	 * releases a computer which becomes available in the warehouse upon completion
 	 */
 	public void up(){
-		isFree= true;
-		try {
-			_promises.remove().resolve(_computer);
+		//while(!isFree.compareAndSet(false, true))////
+		Promise<Computer> prom=_promises.poll();//.resolve(_computer);
+		if(prom!=null){
+			prom.resolve(_computer);
 		}
-		catch (Exception e){
+		else{isFree.compareAndSet(false,true);}
 
-		}
 	}
 }

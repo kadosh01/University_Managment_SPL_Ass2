@@ -41,8 +41,10 @@ public class Promise<T> implements java.io.Serializable{
 	 * @return true if this object has been resolved - i.e., if the method
 	 *         {@link #resolve(java.lang.Object)} has been called on this object
 	 *         before.
+	 *
+	 * adding synchronization to prevent from threads to access the result while another thread resolves the object
 	 */
-	synchronized public boolean isResolved() {
+	public synchronized boolean isResolved() {
 		return result!=null;
 	}
 
@@ -59,6 +61,8 @@ public class Promise<T> implements java.io.Serializable{
      * 			in the case where this object is already resolved
 	 * @param value
 	 *            - the value to resolve this promise object with
+	 *
+	 *  adding synchronization to prevent adding callbacks to the queue while the object is being resolved
 	 */
 	synchronized public void resolve(T value){
 		if(isResolved())
@@ -83,6 +87,8 @@ public class Promise<T> implements java.io.Serializable{
 	 *
 	 * @param callback
 	 *            the callback to be called when the promise object is resolved
+	 *
+	 *adding synchronization to prevent adding callbacks to the while the object is being resolved (otherwise we might miss a callback)
 	 */
 	 synchronized public void subscribe(callback callback) {
 		callbacks.add(callback);

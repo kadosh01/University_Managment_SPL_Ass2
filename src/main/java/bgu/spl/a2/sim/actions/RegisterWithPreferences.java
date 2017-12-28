@@ -28,6 +28,7 @@ public class RegisterWithPreferences extends Action<Boolean> {
         if(_prefrences.size()<=0 || _grades.size()<=0)
         {complete(false);}
         else {
+            if(_grades.get(0).equals("-")){_grades.remove(0);_grades.add(0,"-1");}
             ParticipatingInCourse action = new ParticipatingInCourse(_actorID, _prefrences.get(0), new Integer(Integer.parseInt(_grades.get(0))));
             actionsList.add(action);
             List<String> preferences = _prefrences;
