@@ -91,7 +91,7 @@ public class Simulator {
 					case("Participate In Course"):
 					{
 						int grade;
-						if(act.getGrade().get(0)=="-")
+						if(act.getGrade().get(0).equals("-"))
 							grade= -1;
 						else grade= Integer.parseInt(act.getGrade().get(0));
 						Action participate= new ParticipatingInCourse(act.getStudent(), act.getCourse(), grade);
