@@ -25,7 +25,7 @@ public class ActorThreadPool {
 	protected ConcurrentHashMap<String,AtomicBoolean> _workonList;
 	private Thread[] pool;
 	private volatile boolean finish ;
-	private VersionMonitor vm;
+	public VersionMonitor vm;
 
 	private static ActorThreadPool ac;
 	/**
@@ -59,15 +59,12 @@ public class ActorThreadPool {
                         if( _workonList.get(id)!=null && setWorkOn(id,true) ){ // change this : !_workonList.get(id).get()
                             if(_actionsList.get(id).size()>0){
 								Queue<Action> actor_actions = _actionsList.get(id);
-								if(actor_actions.peek()._actionName.equals("UnregStudents")){
-									System.out.print("");
-								}
 								String n=actor_actions.peek()._actionName;
 								actor_actions.poll().handle(this, id, _privatestateList.get(id));
-								vm.inc();
                             }
 							setWorkOn(id,false);
-                        }
+							vm.inc();
+                        }//end for
                     }
                     try {
                         vm.await(version);
@@ -75,6 +72,7 @@ public class ActorThreadPool {
                         Thread.currentThread().interrupt();
                     }
                 }
+				System.out.println(Thread.currentThread().getName() + "finishhhhhhh !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 //System.out.println(Thread.currentThread().getName() +"is in state : "+ Thread.currentThread().getState());
             });
 		}
@@ -144,11 +142,12 @@ public class ActorThreadPool {
 	public void shutdown() throws InterruptedException {
 
 		for(int i=0; i<pool.length; i++) {
-            //System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
-		    pool[i].interrupt();
+			pool[i].interrupt();
 			//pool[i].join();
-			System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
+
+			//System.out.println(pool[i].getName()+ "is in state : " + Thread.currentThread().getState());
 		}
+		vm.inc();
 		//System.out.println("---shutdown---  num of actions: "+_actionsList.size());
 	}
 
