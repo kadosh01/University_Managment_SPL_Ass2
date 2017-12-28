@@ -190,7 +190,7 @@ public class Simulator {
 
 	public static void main(String [] args){
 		Gson gson = new Gson();
-		Type type = new TypeToken<Reader>() {}.getType();
+		//Type type = new TypeToken<Reader>() {}.getType();
 		try{
 			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
