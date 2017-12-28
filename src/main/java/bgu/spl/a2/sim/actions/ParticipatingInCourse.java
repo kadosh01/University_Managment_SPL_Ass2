@@ -66,7 +66,7 @@ public class ParticipatingInCourse extends Action<Boolean> {
                              //if student already exists in the course, put back the action in the thread pool
                              complete(false);
                              ParticipatingInCourse newAction= new ParticipatingInCourse(_studentId, _actorID, _grade);
-                             _privateState.getLogger().remove(_privateState.getLogger().size()-1);
+                             _privateState.getLogger().remove(_actionName);
                              sendMessage(newAction, _actorID, new CoursePrivateState());
                          }
                          else {

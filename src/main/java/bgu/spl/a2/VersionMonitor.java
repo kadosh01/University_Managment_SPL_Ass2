@@ -31,7 +31,6 @@ public class VersionMonitor {
     public synchronized void await(int version) throws InterruptedException {
         while(_ver==version) {
             try{
-                System.out.println(Thread.currentThread().getName() + "went to sleep !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 wait();
             }
             catch(InterruptedException e){

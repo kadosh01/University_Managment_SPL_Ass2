@@ -190,14 +190,12 @@ public class Simulator {
 
 	public static void main(String [] args){
 		Gson gson = new Gson();
-		//Type type = new TypeToken<Reader>() {}.getType();
 		try{
-			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
-			start(); //calling start()
+			start();
 
 		}
 		catch(FileNotFoundException e){

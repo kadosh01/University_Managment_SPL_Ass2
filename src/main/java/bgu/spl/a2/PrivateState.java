@@ -11,7 +11,7 @@ import java.util.List;
  */
 public abstract class PrivateState implements java.io.Serializable{
 	
-	// holds the actions' name what were executed
+	// holds the actions' name that were executed
 	private List<String> history= new LinkedList<String>();
 
 	public List<String> getLogger(){
@@ -25,7 +25,6 @@ public abstract class PrivateState implements java.io.Serializable{
 	 */
 
 	public void addRecord(String actionName){
-		if(actionName.equals("Administrative Check")){System.out.println("asdasdasdasdasdasd");}
 		history.add(actionName);
 	}
 	
