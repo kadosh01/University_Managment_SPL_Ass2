@@ -1,10 +1,11 @@
 package bgu.spl.a2;
 
+import sun.security.pkcs.ContentInfo;
+
 import java.util.Map;
 import java.util.*;
 import java.lang.*;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -19,7 +20,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class ActorThreadPool {
 	private int nthreads; // number of thread
-	public ConcurrentHashMap<String,Queue<Action>> _actionsList;
+	public ConcurrentHashMap<String,BlockingQueue<Action>> _actionsList;
 	private ConcurrentHashMap<String,PrivateState> _privatestateList;
 	protected ConcurrentHashMap<String,AtomicBoolean> _workonList;
 	private Thread[] pool;
@@ -58,11 +59,14 @@ public class ActorThreadPool {
                         if( _workonList.get(id)!=null && setWorkOn(id,true) ){ // change this : !_workonList.get(id).get()
                             if(_actionsList.get(id).size()>0){
 								Queue<Action> actor_actions = _actionsList.get(id);
+								if(actor_actions.peek()._actionName.equals("UnregStudents")){
+									System.out.print("");
+								}
+								String n=actor_actions.peek()._actionName;
 								actor_actions.poll().handle(this, id, _privatestateList.get(id));
-								//_workonList.put(id, true); //check if the value changes
+								vm.inc();
                             }
 							setWorkOn(id,false);
-							vm.inc();
                         }
                     }
                     try {
@@ -114,7 +118,7 @@ public class ActorThreadPool {
 			}
         }
         else{
-            ConcurrentLinkedQueue<Action> newActor =new ConcurrentLinkedQueue<>();
+            BlockingQueue<Action> newActor =new LinkedBlockingQueue<>();
             if(action!=null) {
 				newActor.add(action);
 				//actorState.addRecord(action.getActionName());

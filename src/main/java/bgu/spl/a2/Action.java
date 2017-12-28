@@ -73,6 +73,7 @@ public abstract class Action<R> {
     protected final void then(Collection<? extends Action<?>> actions, callback callback) {
         _callback_count = new AtomicInteger(actions.size());
         _callback = callback;
+        if(actions.size()<=0){_pool.submit(this, _actorID, _privateState);}
         for (Action<?> act : actions) {
             act.getResult().subscribe(() -> {
                 int local;

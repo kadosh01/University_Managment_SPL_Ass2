@@ -69,6 +69,7 @@
 "Course": "Intro To CS",
 "Grade": ["77"]
 },
+  {
 "Action": "Participate In Course",
 "Student": "132424353",
 "Course": "Algebra",
@@ -101,28 +102,9 @@
 "Grade": ["100"]
 },
 {
-"Action": "Unregister",
-"Student": "123456789",
-"Course": "Data Structures"
-},
-{
 "Action": "Close Course",
 "Department": "CS",
 "Course": "Data Structures"
-},
-{
-"Action" : "Administrative Check",
-"Department": "CS",
-"Students": ["123456789","5959595959"],
-"Computer": "A",
-"Conditions" : ["SPL"]
-}
-{
-"Action" : "Administrative Check",
-"Department": "Math",
-"Students": ["132424353"],
-"Computer": "A",
-"Conditions" : ["Algebra"]
 }
 ]
 }

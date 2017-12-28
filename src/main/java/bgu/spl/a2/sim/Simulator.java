@@ -145,6 +145,16 @@ public class Simulator {
 						});
 						break;
 					}
+					case("Add Spaces"):
+					{
+						Action NewPlaces= new NewPlacesInCourse(act.getCourse(),Integer.parseInt(act.getNumber()));
+						actorThreadPool.submit(NewPlaces, act.getCourse(), new CoursePrivateState());
+						NewPlaces.getResult().subscribe(()->{
+							count.countDown();
+							System.out.println(NewPlaces.getActionName()+"  CountDownLatch: "+count.getCount());
+						});
+						break;
+					}
 					default: count.countDown();
 				}
 
@@ -187,65 +197,7 @@ public class Simulator {
 		return  result;
 
 	}
-/*
-	private static void parsing(List<Action> Phase, List<bgu.spl.a2.Action> outPhase,CountDownLatch count){
-		for (Action act: Phase ) {
-			switch (act.getAction()) {
-				case("Open Course"):
-				{
-					OpenCourse action=new OpenCourse(act.getSpace(),act.getPrerequisites(),act.getAction(),act.getDepartment());
-					actorThreadPool.submit(action,act.getDepartment(),new DepartmentPrivateState());
-					action.getResult().subscribe(()->{
-						count.countDown();
-					});
-					// outPhase.add(action);
-					break;
-				}
-				case("Add Student"):
-				{
-					AddStudent action=new AddStudent(act.getStudent(),act.getDepartment());
-					actorThreadPool.submit(action,act.getDepartment(),new DepartmentPrivateState());
-					action.getResult().subscribe(()->{
-						count.countDown();
-					});
-					//outPhase.add(action);
-					break;
-				}
-				case("Participate In Course"):
-				{
-					ParticipatingInCourse action=new ParticipatingInCourse(act.getStudent(),act.getCourse(),new Integer(act.getGrade().get(0)));
-					outPhase.add(action);
-					break;
-				}
-				case("Register With Preferences"):
-				{
-					RegisterWithPreferences action=new RegisterWithPreferences(act.getStudent(),act.getPreferences(),act.getGrade());
-					outPhase.add(action);
-					break;
-				}
-				case("Unregister"):
-				{
-					Unregister action=new Unregister(act.getStudent(),act.getCourse());
-					outPhase.add(action);
-					break;
-				}
-				case("Close Course"):
-				{
-					CloseACourse action=new CloseACourse(act.getDepartment(),act.getCourse());
-					outPhase.add(action);
-					break;
-				}
-				case("Administrative Check"):
-				{
-					CheckAdministrativeObligations action=new CheckAdministrativeObligations(act.getDepartment(),act.getStudents(),act.getComputer(),act.getConditions());
-					outPhase.add(action);
-					break;
-				}
-				default:
-			}
-		}
-	}
-	*/
+
 	public static void main(String [] args){
 		Gson gson = new Gson();
 		Type type = new TypeToken<Reader>() {}.getType();

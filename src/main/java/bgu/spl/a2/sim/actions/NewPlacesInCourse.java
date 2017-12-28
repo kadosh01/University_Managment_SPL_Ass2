@@ -10,6 +10,7 @@ public class NewPlacesInCourse extends Action<Boolean>{
     public NewPlacesInCourse(String courseName, int additional){
         _actorID= courseName;
         _additional= additional;
+        setActionName("Add Spaces");
     }
 
     @Override

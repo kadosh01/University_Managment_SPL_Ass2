@@ -89,11 +89,6 @@
 "Grade": ["90"]
 },
 {
-"Action": "Close Course",
-"Department": "CS",
-"Course": "Data Structures"
-},
-{
 "Action" : "Administrative Check",
 "Department": "CS",
 "Students": ["123456789","5959595959"],

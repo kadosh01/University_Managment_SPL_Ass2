@@ -60,7 +60,7 @@ public class Promise<T> implements java.io.Serializable{
 	 * @param value
 	 *            - the value to resolve this promise object with
 	 */
-	public void resolve(T value){
+	synchronized public void resolve(T value){
 		if(isResolved())
 			throw new IllegalStateException("already resolved");
 		result= value;
