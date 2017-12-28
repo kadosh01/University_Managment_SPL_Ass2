@@ -35,13 +35,6 @@
 "Prerequisites" :  ["Intro To CS"]
 },
 {
-"Action":"Open Course",
-"Department": "Math",
-"Course": "Algebra",
-"Space": "60",
-"Prerequisites" :  []
-},
-{
 "Action": "Add Student",
 "Department": "CS",
 "Student": "123456789"
@@ -58,23 +51,14 @@
 "Department": "Math",
 "Student": "132424353"
 },
-{
-"Action": "Add Spaces",
-"Course": "SPL",
-"Number": "100"
-},
+
 {
 "Action": "Participate In Course",
 "Student": "123456789",
 "Course": "Intro To CS",
 "Grade": ["77"]
 },
-  {
-"Action": "Participate In Course",
-"Student": "132424353",
-"Course": "Algebra",
-"Grade": ["90"]
-},
+
 {
 "Action": "Participate In Course",
 "Student": "5959595959",
@@ -102,9 +86,16 @@
 "Grade": ["100"]
 },
 {
-"Action": "Close Course",
-"Department": "CS",
+"Action": "Unregister",
+"Student": "123456789",
 "Course": "Data Structures"
+},
+{
+"Action" : "Administrative Check",
+"Department": "CS",
+"Students": ["123456789","5959595959"],
+"Computer": "A",
+"Conditions" : ["SPL", "Data Structures"]
 }
 ]
 }

@@ -24,34 +24,13 @@ public class CloseACourse extends Action<Boolean>{
     protected void start() {
         List<Action<Boolean>> actions=new LinkedList<>();
         String course= _courseName;
-        actions.add(new Action<Boolean>() { //new action child : send action to the course to unregister all the students participate in this course.
-            @Override
-            protected void start() {
-                CoursePrivateState cps=(CoursePrivateState)_pool.getActors().get(course);
-                List<Action<Boolean>> unregisterActions=new LinkedList<>(); //create unregister action grand kid for each student
-                for (String student :cps.getRegStudents()) {
-                    Unregister unreg= new Unregister(student,course);
-                    unregisterActions.add(unreg);
-                    sendMessage(unreg,course, new CoursePrivateState());
+        UnregStudents unregStudents=new UnregStudents(_courseName);
+        actions.add(unregStudents); //new action child : send action to the course to unregister all the students participate in this course.
 
-                }//end for
-                then(unregisterActions,()->{
-                    boolean success=true;
-                    for (Action<Boolean> action :actions) {
-                        success=action.getResult().get();
-                        if(!success){break;}
-                    }
-                    if(success){
-                        ((CoursePrivateState)_privateState).getRegStudents().clear();
-                        ((CoursePrivateState)_privateState).setAvailableSpots(-1);
-                        complete(true);
-                    }
-                    else{complete(false);}
-                });
-            }//end start()
-        });//end action.add()
         sendMessage(actions.get(0),_courseName,new CoursePrivateState());
+        //complete(true);
         then(actions,()->{
+
             if(actions.get(0).getResult().get()) {
                 ((DepartmentPrivateState)_privateState).getCourseList().remove(_courseName);
                 complete(true);
