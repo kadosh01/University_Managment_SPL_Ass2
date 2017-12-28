@@ -3,16 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ea10b0ad-f5d5-4724-a87e-d9b379852eca" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/result.ser" afterPath="$PROJECT_DIR$/result.ser" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Computer.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Computer.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SuspendingMutex.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SuspendingMutex.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Warehouse.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Warehouse.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/UnregStudents.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/UnregStudents.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/input-example.JSON" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/StudentPrivateState.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/StudentPrivateState.java" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/SuspendingMutex.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/SuspendingMutex.class" />
       <change beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.class" />
@@ -1001,7 +991,14 @@
       <option name="project" value="LOCAL" />
       <updated>1514471591027</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="17:08">
+      <created>1514473720557</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1514473720557</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1128,7 +1125,8 @@
     <MESSAGE value="01:31" />
     <MESSAGE value="16:19" />
     <MESSAGE value="16:33" />
-    <option name="LAST_COMMIT_MESSAGE" value="16:33" />
+    <MESSAGE value="17:08" />
+    <option name="LAST_COMMIT_MESSAGE" value="17:08" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
