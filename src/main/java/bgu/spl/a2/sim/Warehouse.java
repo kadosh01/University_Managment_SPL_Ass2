@@ -35,6 +35,5 @@ public class Warehouse {
     }
 
     public SuspendingMutex getMutex(String computerName){return _pcMutexList.get(computerName);}
-    public Computer getComputer(String computerName){return _pcList.get(computerName);}
 
 }

@@ -24,6 +24,7 @@ public class StudentPrivateState extends PrivateState implements java.io.Seriali
 	public HashMap<String, Integer> getGrades() {
 		return grades;
 	}
+
 	public Integer getGrade(String course) {
 		return grades.get(course);
 	}

@@ -37,16 +37,10 @@ public class DepartmentPrivateState extends PrivateState implements Serializable
 		if(!courseList.contains(courseName))
 			courseList.add(courseName);
 	}
-	public void removeCourse(String courseName){
-		if(courseList.contains(courseName))
-			courseList.remove(courseName);
-	}
+
 	public void addStudent(String studentName){
 		if(!studentList.contains(studentName))
 			studentList.add(studentName);
-	}
-	public void removeStudent(String studentName){
-		studentList.remove(studentName);
 	}
 	
 }
