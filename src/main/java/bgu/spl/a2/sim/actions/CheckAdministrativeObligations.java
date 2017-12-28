@@ -5,6 +5,7 @@ import bgu.spl.a2.Promise;
 import bgu.spl.a2.sim.Computer;
 import bgu.spl.a2.sim.Warehouse;
 import bgu.spl.a2.sim.privateStates.StudentPrivateState;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class CheckAdministrativeObligations extends Action<Boolean> {
         if(Warehouse.getInstance().getMutex(_computerName)!=null) {
             Promise<Computer> promise = Warehouse.getInstance().getMutex(_computerName).down();
             promise.subscribe(() -> {
-                List<Action<Boolean>> actions = new LinkedList<>();
+                List<Action<Boolean>> actions = new LinkedList<Action<Boolean>>();
                 for (String id : _studentsList) {
                     Action<Boolean> act = new Action<Boolean>() {
                         @Override
@@ -46,14 +47,7 @@ public class CheckAdministrativeObligations extends Action<Boolean> {
                     sendMessage(act, id, new StudentPrivateState());
                 }
                 then(actions, () -> {
-                    boolean success = true;
-                    for (Action<Boolean> act : actions) {
-                        if (!act.getResult().get()) {
-                            success = false;
-                            break;
-                        }
-                    }
-                    complete(success);
+                    complete(true);
                     Warehouse.getInstance().getMutex(_computerName).up();
                 });
             });

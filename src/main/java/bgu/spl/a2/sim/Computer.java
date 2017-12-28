@@ -23,7 +23,9 @@ public class Computer {
 	 */
 	public long checkAndSign(List<String> courses, Map<String, Integer> coursesGrades){
 		for (String course:courses) {
-			if(!coursesGrades.containsKey(course) || coursesGrades.get(course)<56){return failSig;}
+			if(!coursesGrades.containsKey(course) || coursesGrades.get(course)<56){
+				return failSig;
+			}
 		}
 		return successSig;
 	}

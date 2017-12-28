@@ -2,10 +2,12 @@ package bgu.spl.a2.sim.actions;
 
 import bgu.spl.a2.Action;
 import bgu.spl.a2.sim.privateStates.CoursePrivateState;
+import bgu.spl.a2.sim.privateStates.StudentPrivateState;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Joseph on 21/12/2017.
@@ -17,28 +19,32 @@ public class RegisterWithPreferences extends Action<Boolean> {
         _actorID=studentId;
         _prefrences= prefrences;
         _grades= grades;
+        setActionName("Register With Preferences");
     }
 
     @Override
     protected void start() {
-        boolean success=false;
-        for (int i=0;i<_prefrences.size();i++)
-        {
-            ParticipatingInCourse action=new ParticipatingInCourse(_actorID, _prefrences.get(i),new Integer(_grades.get(i)));
-            sendMessage(action,_prefrences.get(i),new CoursePrivateState());
-            List<Action<Boolean>> list=new LinkedList<>();
-            list.add(action);
-            then(list,()->{
-                if (list.get(0).getResult().get())
-                {
-                    complete(true);
-                }
-            });
-            if(getResult().get()!=null && getResult().get()){
-                success=true;
-                break;
-            }
-        }
-        if(!success){complete(success);}
+        List<Action<Boolean>> actionsList= new LinkedList<>();
+        ParticipatingInCourse action= new ParticipatingInCourse(_actorID, _prefrences.get(0), new Integer(Integer.parseInt(_grades.get(0))));
+        actionsList.add(action);
+        List<String> preferences= _prefrences;
+        List<String> grades= _grades;
+        sendMessage(action, _prefrences.get(0), new CoursePrivateState());
+        then(actionsList, ()->{
+           if(action.getResult().get()){
+               complete(true);
+           }
+           else{
+               if(_prefrences.size()<=0){
+                   complete(false);
+               }
+               else{
+                  preferences.remove(0);
+                  grades.remove(0);
+                  RegisterWithPreferences newAction= new RegisterWithPreferences(_actorID, preferences, grades);
+                  sendMessage(newAction, _actorID, new StudentPrivateState());
+               }
+           }
+        });
     }
 }
