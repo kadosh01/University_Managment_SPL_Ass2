@@ -13,7 +13,6 @@ public class AddStudent extends Action<Boolean>{
         _studentId= studentId;
         _actorID=departmentName;
         _departmentName= departmentName;
-        _privateState=new DepartmentPrivateState(); // if the department dose'nt exist we will open one.
     }
 
     @Override

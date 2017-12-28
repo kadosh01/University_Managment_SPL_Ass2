@@ -66,7 +66,6 @@ public class Simulator {
 		actorThreadPool.start();
 		int i=0;
 		for(List<ActionParsing> phase : flow) {
-			System.out.println("phase "+ ++i);
 			int counter = phase.size();
 			CountDownLatch count = new CountDownLatch(counter);
 			for (ActionParsing act : phase) {
@@ -77,7 +76,6 @@ public class Simulator {
 						actorThreadPool.submit(openCourse, act.getDepartment(), new DepartmentPrivateState());
 						openCourse.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(openCourse.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -87,7 +85,6 @@ public class Simulator {
 						actorThreadPool.submit(addStudent, act.getDepartment(), new DepartmentPrivateState());
 						addStudent.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(addStudent.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -101,7 +98,6 @@ public class Simulator {
 						actorThreadPool.submit(participate, act.getCourse(), new CoursePrivateState());
 						participate.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(participate.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -111,7 +107,6 @@ public class Simulator {
 						actorThreadPool.submit(register, act.getStudent(), new StudentPrivateState());
 						register.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(register.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -121,7 +116,6 @@ public class Simulator {
 						actorThreadPool.submit(unregister, act.getCourse(), new CoursePrivateState());
 						unregister.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(unregister.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -131,7 +125,6 @@ public class Simulator {
 						actorThreadPool.submit(close, act.getDepartment(), new DepartmentPrivateState());
 						close.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(close.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -141,7 +134,6 @@ public class Simulator {
 						actorThreadPool.submit(administrative, act.getDepartment(), new DepartmentPrivateState());
 						administrative.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(administrative.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -151,7 +143,6 @@ public class Simulator {
 						actorThreadPool.submit(NewPlaces, act.getCourse(), new CoursePrivateState());
 						NewPlaces.getResult().subscribe(()->{
 							count.countDown();
-							System.out.println(NewPlaces.getActionName()+"  CountDownLatch: "+count.getCount());
 						});
 						break;
 					}
@@ -186,7 +177,6 @@ public class Simulator {
 		HashMap<String, PrivateState> result=new HashMap<>();
 		try {
 			actorThreadPool.shutdown();
-			System.out.println("---shutdown---  num of actions: "+actorThreadPool._actionsList.size());
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -204,7 +194,6 @@ public class Simulator {
 		try{
 			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
-			System.out.println("Reader");
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;

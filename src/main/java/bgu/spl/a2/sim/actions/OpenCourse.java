@@ -14,6 +14,7 @@ public class OpenCourse extends Action<Boolean>{
     private int _availableSpaces;
     List<String> _prerequisites;
     private String _courseName;
+
     public OpenCourse(int availableSpaces, List<String> prerequisites, String courseName, String departmentName)
     {
         _actorID=departmentName;
@@ -21,8 +22,8 @@ public class OpenCourse extends Action<Boolean>{
         _availableSpaces=availableSpaces;
         _prerequisites=prerequisites;
         setActionName("Open Course");
-        _privateState=new DepartmentPrivateState(); // if the department dose'nt exist we will open one.
     }
+
     public void start()
     {
         CoursePrivateState cps= new CoursePrivateState();

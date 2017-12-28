@@ -18,36 +18,34 @@ public class Unregister extends Action<Boolean>{
 
     @Override
     protected void start() {
-        if(((CoursePrivateState)_privateState).getRegStudents().contains(_studentId)){
-            ((CoursePrivateState)_privateState).dec();
-            String course= _actorID;
-            List<Action<Boolean>> actions= new LinkedList<>();
-            actions.add(new Action<Boolean>() {
-                @Override
-                protected void start() {
-                    StudentPrivateState sps= (StudentPrivateState)_pool.getActors().get(_studentId);
-                    sps.getGrades().remove(course);
+        ((CoursePrivateState)_privateState).dec();
+        String course= _actorID;
+        List<Action<Boolean>> actions= new LinkedList<>();
+        actions.add(new Action<Boolean>() {
+            @Override
+            protected void start() {
+                StudentPrivateState sps= (StudentPrivateState)_pool.getActors().get(_studentId);
+                sps.getGrades().remove(course);
+                complete(true);
+            }
+        });
+        sendMessage(actions.get(0), _studentId, new StudentPrivateState());
+        then(actions, ()->{
+            if(!((CoursePrivateState)_privateState).getRegStudents().contains(_studentId)){
+                complete(false);
+                Unregister newAction= new Unregister(_studentId, _actorID);
+                sendMessage(newAction, _actorID, new CoursePrivateState());
+            }
+            else {
+                if (actions.get(0).getResult().get()) {
+                    ((CoursePrivateState) _privateState).removeStudent(_studentId);
                     complete(true);
+                } else {
+                    ((CoursePrivateState) _privateState).inc();
+                    complete(false);
                 }
-            });
-            sendMessage(actions.get(0), _studentId, new StudentPrivateState());
-            then(actions, ()->{
-               if(actions.get(0).getResult().get()){
-                   ((CoursePrivateState)_privateState).removeStudent(_studentId);
-                   complete(true);
-               }
-               else{
-                   ((CoursePrivateState)_privateState).inc();
-                   complete(false);
-               }
-            });
-        }
-        else{
+            }
+        });
 
-            _privateState.getLogger().remove(_privateState.getLogger().size()-1);
-            Unregister action=new Unregister(_studentId,_actorID);
-            sendMessage(action, _actorID, new CoursePrivateState());
-            complete(false);
-        }
     }
 }

@@ -23,12 +23,10 @@ public class CloseACourse extends Action<Boolean>{
     @Override
     protected void start() {
         List<Action<Boolean>> actions=new LinkedList<>();
-        String course= _courseName;
         UnregStudents unregStudents=new UnregStudents(_courseName);
         actions.add(unregStudents); //new action child : send action to the course to unregister all the students participate in this course.
 
         sendMessage(actions.get(0),_courseName,new CoursePrivateState());
-        //complete(true);
         then(actions,()->{
 
             if(actions.get(0).getResult().get()) {
