@@ -32,7 +32,7 @@
 "Department": "CS",
 "Course": "Data Structures",
 "Space": "100",
-"Prerequisites" :  ["Intro To CS"]
+"Prerequisites" :  []
 },
 {
 "Action": "Add Student",
@@ -66,17 +66,17 @@
 },
 {
 "Action": "Participate In Course",
-"Student": "5959595959",
-"Course": "SPL",
-"Grade": ["55"]
+"Student": "123456789",
+"Course": "Data Structures",
+"Grade": ["90"]
 }
 ],
 "Phase 3": [
 {
 "Action": "Participate In Course",
-"Student": "123456789",
-"Course": "Data Structures",
-"Grade": ["90"]
+"Student": "5959595959",
+"Course": "SPL",
+"Grade": ["57"]
 },
 {
 "Action" : "Administrative Check",
@@ -84,6 +84,21 @@
 "Students": ["123456789","5959595959"],
 "Computer": "A",
 "Conditions" : ["Intro To CS" , "Data Structures"]
+},
+{
+"Action" : "Administrative Check",
+"Department": "CS",
+"Students": ["123456789","5959595959"],
+"Computer": "A",
+"Conditions" : ["Intro To CS" , "Data Structures"]
+},
+{
+"Action" : "Administrative Check",
+"Department": "CS",
+"Students": ["5959595959"],
+"Computer": "B",
+"Conditions" : ["Intro To CS"]
 }
 ]
 }
+

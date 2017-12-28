@@ -37,8 +37,8 @@ public class SuspendingMutex {
 	 * 
 	 * @return a promise for the requested computer
 	 */
-	public Promise<Computer> down(){
-		System.out.print(_computer.computerType+" : available "+isFree+" taken  by - "+ Thread.currentThread().getName());
+	public synchronized Promise<Computer> down(){ //added synchronized
+		System.out.println(_computer.computerType+" : available "+isFree+" taken  by - "+ Thread.currentThread().getName());
 		if(isFree){
 			isFree= false;
 			Promise<Computer> comp= new Promise<>();

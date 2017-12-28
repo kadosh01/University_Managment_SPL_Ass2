@@ -23,7 +23,7 @@ public class SimulatorDeserializable  {
     @Test
     public void main() {
         //todo change the name of the file in the next line for the name you have
-        Simulator.main(new String[]{"C:\\Users\\Joseph\\.IntelliJIdea2017.1\\Projects\\a2\\RWP1.json"});
+        Simulator.main(new String[]{"registerCheck2.json"});
         try ( InputStream fin = new FileInputStream("result.ser");
               ObjectInputStream ois = new ObjectInputStream(fin)){
             HashMap data = (HashMap) ois.readObject();
