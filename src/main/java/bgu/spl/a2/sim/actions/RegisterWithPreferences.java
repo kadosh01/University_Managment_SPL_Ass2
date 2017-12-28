@@ -25,26 +25,30 @@ public class RegisterWithPreferences extends Action<Boolean> {
     @Override
     protected void start() {
         List<Action<Boolean>> actionsList= new LinkedList<>();
-        ParticipatingInCourse action= new ParticipatingInCourse(_actorID, _prefrences.get(0), new Integer(Integer.parseInt(_grades.get(0))));
-        actionsList.add(action);
-        List<String> preferences= _prefrences;
-        List<String> grades= _grades;
-        sendMessage(action, _prefrences.get(0), new CoursePrivateState());
-        then(actionsList, ()->{
-           if(action.getResult().get()){
-               complete(true);
-           }
-           else{
-               if(_prefrences.size()<=0){
-                   complete(false);
-               }
-               else{
-                  preferences.remove(0);
-                  grades.remove(0);
-                  RegisterWithPreferences newAction= new RegisterWithPreferences(_actorID, preferences, grades);
-                  sendMessage(newAction, _actorID, new StudentPrivateState());
-               }
-           }
-        });
+        if(_prefrences.size()<=0 || _grades.size()<=0)
+        {complete(false);}
+        else {
+            ParticipatingInCourse action = new ParticipatingInCourse(_actorID, _prefrences.get(0), new Integer(Integer.parseInt(_grades.get(0))));
+            actionsList.add(action);
+            List<String> preferences = _prefrences;
+            List<String> grades = _grades;
+            sendMessage(action, _prefrences.get(0), new CoursePrivateState());
+            then(actionsList, () -> {
+                if (action.getResult().get()) {
+                    complete(true);
+                } else {
+                    if (_prefrences.size() <= 0 || _grades.size() <= 0) {
+                        complete(false);
+                    } else {
+                        preferences.remove(0);
+                        grades.remove(0);
+                        complete(false);
+                        RegisterWithPreferences newAction = new RegisterWithPreferences(_actorID, preferences, grades);
+                        _privateState.getLogger().remove(_privateState.getLogger().size()-1);
+                        sendMessage(newAction, _actorID, new StudentPrivateState());
+                    }
+                }
+            });
+        }
     }
 }
