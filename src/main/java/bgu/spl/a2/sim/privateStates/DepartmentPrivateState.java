@@ -11,7 +11,6 @@ import bgu.spl.a2.PrivateState;
  * this class describe department's private state
  */
 public class DepartmentPrivateState extends PrivateState implements Serializable {
-	private static final long serialVersionUID = 1L;
 	private  List<String> courseList;
 	private List<String> studentList;
 	
@@ -37,16 +36,10 @@ public class DepartmentPrivateState extends PrivateState implements Serializable
 		if(!courseList.contains(courseName))
 			courseList.add(courseName);
 	}
-	public void removeCourse(String courseName){
-		if(courseList.contains(courseName))
-			courseList.remove(courseName);
-	}
+
 	public void addStudent(String studentName){
 		if(!studentList.contains(studentName))
 			studentList.add(studentName);
-	}
-	public void removeStudent(String studentName){
-		studentList.remove(studentName);
 	}
 	
 }

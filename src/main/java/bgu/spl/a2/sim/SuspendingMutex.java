@@ -4,6 +4,7 @@ import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -20,7 +21,6 @@ public class SuspendingMutex {
 	private Computer _computer;
 	private boolean isFree;
 	private Queue<Promise<Computer>> _promises;
-	AtomicInteger queueSize;
 
 	/**
 	 * Constructor
@@ -29,7 +29,7 @@ public class SuspendingMutex {
 	public SuspendingMutex(Computer computer){
 		_computer= computer;
 		isFree= true;
-		_promises= new ConcurrentLinkedQueue<Promise<Computer>>();
+		_promises= new LinkedBlockingQueue<>();
 	}
 	/**
 	 * Computer acquisition procedure
@@ -38,7 +38,6 @@ public class SuspendingMutex {
 	 * @return a promise for the requested computer
 	 */
 	public synchronized Promise<Computer> down(){ //added synchronized
-		System.out.println(_computer.computerType+" : available "+isFree+" taken  by - "+ Thread.currentThread().getName());
 		if(isFree){
 			isFree= false;
 			Promise<Computer> comp= new Promise<>();
@@ -57,12 +56,6 @@ public class SuspendingMutex {
 	 */
 	public void up(){
 		isFree= true;
-		System.out.println(_computer.computerType+" : available "+isFree+" was free  by - "+ Thread.currentThread().getName());
-		try {
-			_promises.remove().resolve(_computer);
-		}
-		catch(Exception e){
-
-		}
+		_promises.remove().resolve(_computer);
 	}
 }

@@ -50,7 +50,6 @@ public abstract class Action<R> {
             _pool = pool;
             _privateState = actorState;
             actorState.addRecord(_actionName);
-            System.out.println(_actorID + " : " + _actionName + " status : start by - " + Thread.currentThread().getName());
             start();
 
         } else {

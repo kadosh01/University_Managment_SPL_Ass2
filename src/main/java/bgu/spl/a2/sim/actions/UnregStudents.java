@@ -18,9 +18,8 @@ public class UnregStudents extends Action<Boolean> {
 
     @Override
     protected void start() {
-        ///////////////////////////////////////////////////
-        CoursePrivateState cps=(CoursePrivateState)_privateState;//(CoursePrivateState)_pool.getActors().get(course);
-        List<Action<Boolean>> unregisterActions=new LinkedList<>(); //create unregister action grand kid for each student
+        CoursePrivateState cps=(CoursePrivateState)_privateState;
+        List<Action<Boolean>> unregisterActions=new LinkedList<>(); //create unregister action for each student
             for (String student : cps.getRegStudents()) {
                 Unregister unreg = new Unregister(student, _actorID);
                 unregisterActions.add(unreg);
@@ -35,7 +34,6 @@ public class UnregStudents extends Action<Boolean> {
             if(success){
                 ((CoursePrivateState)_privateState).getRegStudents().clear();
                 ((CoursePrivateState)_privateState).setAvailableSpots(-1);
-                System.out.println(_actorID+"    "+((CoursePrivateState)_privateState).getAvailableSpots()+"aaaaaaaaaaaaaaaaaaaaaaaaaaalllllllllllllllll students are unregistered !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 complete(true);
             }
             else{complete(false);}

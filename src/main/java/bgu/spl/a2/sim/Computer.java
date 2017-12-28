@@ -10,7 +10,7 @@ public class Computer {
 	long successSig;
 	
 	public Computer(String computerType) {
-	    this.computerType = computerType;
+		this.computerType = computerType;
 	}
 	
 	/**

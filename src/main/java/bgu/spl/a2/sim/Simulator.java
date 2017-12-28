@@ -23,14 +23,11 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.Type;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
 
 /**
@@ -56,7 +53,7 @@ public class Simulator {
 				computers.add(newComputer);
 			}
 		}
-		Warehouse warehouse=Warehouse.getInstance(computers);
+		Warehouse.getInstance(computers);
 		//parsing json Actions
 		List<List<ActionParsing>> flow= new LinkedList<>();
 		flow.add(jsonInput.getPhase1());
@@ -64,7 +61,6 @@ public class Simulator {
 		flow.add(jsonInput.getPhase3());
 
 		actorThreadPool.start();
-		int i=0;
 		for(List<ActionParsing> phase : flow) {
 			int counter = phase.size();
 			CountDownLatch count = new CountDownLatch(counter);
@@ -91,7 +87,7 @@ public class Simulator {
 					case("Participate In Course"):
 					{
 						int grade;
-						if(act.getGrade().get(0)=="-")
+						if(act.getGrade().get(0).equals("-"))
 							grade= -1;
 						else grade= Integer.parseInt(act.getGrade().get(0));
 						Action participate= new ParticipatingInCourse(act.getStudent(), act.getCourse(), grade);
@@ -148,7 +144,6 @@ public class Simulator {
 					}
 					default: count.countDown();
 				}
-
 			}
 			try{
 				count.await();
@@ -166,7 +161,7 @@ public class Simulator {
 	* @param myActorThreadPool - the ActorThreadPool which will be used by the simulator
 	*/
 	public static void attachActorThreadPool(ActorThreadPool myActorThreadPool){
-		actorThreadPool= myActorThreadPool;
+	    actorThreadPool= myActorThreadPool;
 	}
 	
 	/**
@@ -183,21 +178,17 @@ public class Simulator {
 		for(ConcurrentHashMap.Entry<String,PrivateState> entry : actorThreadPool.getActors().entrySet()){
 			result.put(entry.getKey(),entry.getValue());
 		}
-
 		return  result;
-
 	}
 
 	public static void main(String [] args){
 		Gson gson = new Gson();
-		Type type = new TypeToken<Reader>() {}.getType();
 		try{
-			//JsonReader jReader = new JsonReader(new FileReader(args[0]));
 			Reader reader= gson.fromJson(new FileReader(args[0]), Reader.class);
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
-			start(); //calling start()
+			start();
 
 		}
 		catch(FileNotFoundException e){
@@ -207,7 +198,6 @@ public class Simulator {
 		try(FileOutputStream fout=new FileOutputStream("result.ser");ObjectOutputStream oos=new ObjectOutputStream(fout);){
 
 			oos.writeObject(end());
-
 		}
 		catch (IOException e){System.out.println(e.getMessage());}
 
