@@ -64,7 +64,7 @@ public class Promise<T> implements java.io.Serializable{
 	 *
 	 *  adding synchronization to prevent adding callbacks to the queue while the object is being resolved
 	 */
-	synchronized public void resolve(T value){
+	 public synchronized void resolve(T value){
 		if(isResolved())
 			throw new IllegalStateException("already resolved");
 		result= value;
@@ -90,11 +90,11 @@ public class Promise<T> implements java.io.Serializable{
 	 *
 	 *adding synchronization to prevent adding callbacks to the while the object is being resolved (otherwise we might miss a callback)
 	 */
-	 synchronized public void subscribe(callback callback) {
+	  public synchronized void subscribe(callback callback) {
 		callbacks.add(callback);
 		if(isResolved()){
 			callback.call();
-			callbacks.remove(callback); // add synchronize??
+			callbacks.remove(callback);
 		}
 	}
 }

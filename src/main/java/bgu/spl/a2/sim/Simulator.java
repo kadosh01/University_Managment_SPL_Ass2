@@ -194,7 +194,7 @@ public class Simulator {
 			ActorThreadPool atp= new ActorThreadPool(Integer.parseInt(reader.getThreads()));
 			attachActorThreadPool(atp);
 			jsonInput=reader;
-			start(); //calling start()
+			start();
 
 		}
 		catch(FileNotFoundException e){
