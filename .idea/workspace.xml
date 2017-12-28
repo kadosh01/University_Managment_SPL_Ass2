@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="ea10b0ad-f5d5-4724-a87e-d9b379852eca" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/result.ser" afterPath="$PROJECT_DIR$/result.ser" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/ActorThreadPool.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/ActorThreadPool.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/sim/Simulator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Action.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/Action.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/bgu/spl/a2/VersionMonitor.class" afterPath="$PROJECT_DIR$/target/classes/bgu/spl/a2/VersionMonitor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java" afterPath="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="C:\Users\Joseph\.IntelliJIdea2017.1\Projects\a2\.idea\shelf/" />
@@ -24,11 +22,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="196" column="53" lean-forward="true" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
+              <caret line="196" column="53" lean-forward="false" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5476#5477#0" expanded="true" />
@@ -41,8 +39,8 @@
       <file leaf-file-name="Action.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
-              <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+            <state relative-caret-position="198">
+              <caret line="99" column="30" lean-forward="false" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -52,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="281">
-              <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+              <caret line="67" column="21" lean-forward="false" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -62,17 +60,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="88">
-              <caret line="25" column="49" lean-forward="false" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+              <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoursePrivateState.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java">
+      <file leaf-file-name="ParticipatingInCourse.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/ParticipatingInCourse.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+            <state relative-caret-position="-170">
+              <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -82,7 +80,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+              <caret line="13" column="52" lean-forward="false" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -112,7 +110,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="341">
-              <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+              <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -122,7 +120,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="383">
-              <caret line="46" column="93" lean-forward="false" selection-start-line="46" selection-start-column="93" selection-end-line="46" selection-end-column="93" />
+              <caret line="46" column="70" lean-forward="false" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -183,12 +181,12 @@
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/CloseACourse.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/UnregStudents.java" />
         <option value="$PROJECT_DIR$/RWP1.json" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java" />
         <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java" />
       </list>
     </option>
   </component>
@@ -521,7 +519,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Simulator">
+  <component name="RunManager" selected="Application.checkResultSer (1)">
     <configuration default="false" name="checkResultSer (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1036,9 +1034,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.Simulator" />
+        <item index="0" class="java.lang.String" itemvalue="Application.checkResultSer (1)" />
         <item index="1" class="java.lang.String" itemvalue="JUnit.SimulatorDeserializable" />
-        <item index="2" class="java.lang.String" itemvalue="Application.checkResultSer (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Simulator" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.ActorThreadPoolTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.ActionsTest" />
       </list>
@@ -1186,13 +1184,17 @@
       <option name="project" value="LOCAL" />
       <updated>1514473688151</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="18:33">
+      <created>1514478831180</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1514478831181</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SimulatorDeserializable - 2017.12.28 at 17h 50m 12s.xml">
-      <configuration name="SimulatorDeserializable" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="SimulatorDeserializable - 2017.12.28 at 18h 07m 26s.xml">
       <configuration name="SimulatorDeserializable" configurationId="JUnit" />
     </history-entry>
@@ -1220,9 +1222,12 @@
     <history-entry file="SimulatorDeserializable - 2017.12.28 at 18h 13m 14s.xml">
       <configuration name="SimulatorDeserializable" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SimulatorDeserializable - 2017.12.28 at 18h 35m 11s.xml">
+      <configuration name="SimulatorDeserializable" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36511000" />
+    <option name="totallyTimeSpent" value="37035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1378" height="735" extended-state="0" />
@@ -1238,7 +1243,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0784" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1856" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2128" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1335,7 +1340,8 @@
     <MESSAGE value="19:09" />
     <MESSAGE value="01:31" />
     <MESSAGE value="17:07" />
-    <option name="LAST_COMMIT_MESSAGE" value="17:07" />
+    <MESSAGE value="18:33" />
+    <option name="LAST_COMMIT_MESSAGE" value="18:33" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1527,19 +1533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/ParticipatingInCourse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
-          <folding>
-            <element signature="e#896#1661#0" expanded="true" />
-            <element signature="e#1660#1661#0" expanded="true" />
-            <element signature="e#2031#2411#0" expanded="true" />
-            <element signature="e#2410#2411#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Integer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -1662,18 +1655,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="46" column="93" lean-forward="false" selection-start-line="46" selection-start-column="93" selection-end-line="46" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/CoursePrivateState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
-          <caret line="58" column="21" lean-forward="true" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
+          <caret line="58" column="21" lean-forward="false" selection-start-line="58" selection-start-column="21" selection-end-line="58" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1689,15 +1674,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/privateStates/DepartmentPrivateState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="25" column="49" lean-forward="false" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+          <caret line="13" column="52" lean-forward="false" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1710,18 +1687,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="99" column="9" lean-forward="false" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/VersionMonitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
-          <caret line="35" column="13" lean-forward="true" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1729,7 +1698,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/ActorThreadPool.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
-          <caret line="67" column="21" lean-forward="true" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+          <caret line="67" column="21" lean-forward="false" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1737,12 +1706,44 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/Simulator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
-          <caret line="196" column="53" lean-forward="true" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
+          <caret line="196" column="53" lean-forward="false" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5476#5477#0" expanded="true" />
             <element signature="e#5517#5518#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="99" column="30" lean-forward="false" selection-start-line="99" selection-start-column="30" selection-end-line="99" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/SimulatorDeserializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/RegisterWithPreferences.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="46" column="70" lean-forward="false" selection-start-line="46" selection-start-column="70" selection-end-line="46" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/bgu/spl/a2/sim/actions/ParticipatingInCourse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="28" column="32" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>

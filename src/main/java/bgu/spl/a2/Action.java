@@ -97,7 +97,6 @@ public abstract class Action<R> {
      */
     protected final void complete(R result) {
         _promise.resolve(result);
-       // _pool.
         //_pool.setWorkOn(_actorID,false); //change the state of the current actor
 
         System.out.println(_actorID + " : " + _actionName + " status : complete by - " + Thread.currentThread().getName());

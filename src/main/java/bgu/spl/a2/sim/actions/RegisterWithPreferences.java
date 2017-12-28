@@ -44,7 +44,7 @@ public class RegisterWithPreferences extends Action<Boolean> {
                         grades.remove(0);
                         complete(false);
                         RegisterWithPreferences newAction = new RegisterWithPreferences(_actorID, preferences, grades);
-                        _privateState.getLogger().remove(_privateState.getLogger().size()-1);
+                        _privateState.getLogger().remove(_actionName);
                         sendMessage(newAction, _actorID, new StudentPrivateState());
                     }
                 }
